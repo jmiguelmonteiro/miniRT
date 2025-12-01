@@ -3,6 +3,7 @@
 
 # define EPSILON 0.00001
 
+# include <libft.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -77,7 +78,7 @@ typedef struct s_scene
 	t_amb_light	amb_light;
 	t_camera	camera;
 	t_light		light;
-	t_sphere	*spheres;				// ??? use array, list
+	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
 
