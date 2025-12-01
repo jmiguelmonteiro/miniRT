@@ -25,5 +25,4 @@ t_scene	*init_scene(void)
 	scene->planes = NULL;
 	scene->cylinders = NULL;
 	return (scene);
-	//
 }
