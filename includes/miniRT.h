@@ -3,12 +3,14 @@
 
 # define EPSILON 0.00001
 
-# include <libft.h>
+//# include <libft.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # include "parser.h"
+# include "utils.h"
 
 // when w = 0 vector
 //		w = 1 point
@@ -44,7 +46,7 @@ typedef struct s_light
 {
 	t_tuple	position;
 	double	brightness;
-	t_color	color;								// not used in mandatory part	
+	t_color	color;
 }	t_light;
 
 typedef struct s_sphere
