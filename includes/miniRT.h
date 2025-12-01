@@ -7,6 +7,8 @@
 
 # include "parser.h"
 
+// when w = 0 vector
+//		w = 1 point
 typedef struct s_tuple
 {
 	double	x;

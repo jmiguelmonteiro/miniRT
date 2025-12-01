@@ -1,12 +1,28 @@
 #include "miniRT.h"
 
-void	init_scene(t_scene *scene)
+t_scene	*init_scene(void)
 {
-	// TODO: change this to correct data type
-	scene->ambient_lighting = 0;
-	scene->camera = 0;
-	scene->light = 0;
-	scene->sphere = NULL;
-	scene->plane = NULL;
-	scene->cylinder = NULL;
+	t_scene		*scene;
+	t_amb_light	amb_light;
+	t_camera	camera;
+	t_light		light;
+
+	scene = malloc(sizeof(t_scene));
+	if (!scene)
+		return (NULL);
+	amb_light.ratio = 0;
+	amb_light.color = color(0, 0, 0);
+	camera.position = point(0, 0, 0);
+	camera.orientation = vector(0, 0, 0);
+	camera.fov = 0;
+	light.position = point(0, 0, 0);
+	light.brightness = 0;
+	light.color = color(0, 0, 0);
+	scene->amb_light = amb_light;
+	scene->camera = camera;
+	scene->light = light;
+	scene->spheres = NULL;
+	scene->planes = NULL;
+	scene->cylinders = NULL;
+	return (scene);
 }
