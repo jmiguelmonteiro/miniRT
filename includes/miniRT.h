@@ -3,14 +3,14 @@
 
 # define EPSILON 0.00001
 
-//# include <libft.h>
+# include <libft.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-
-# include "parser.h"
-# include "utils.h"
+# include <stdio.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 // when w = 0 vector
 //		w = 1 point
@@ -51,28 +51,28 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_tuple		center;
-	double		diameter;
-	t_color		color;
-	t_sphere	*next;
+	t_tuple			center;
+	double			diameter;
+	t_color			color;
+	struct s_sphere	*next;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_tuple	point;
-	t_tuple	normal;
-	t_color	color;
-	t_plane	*next;
+	t_tuple			point;
+	t_tuple			normal;
+	t_color			color;
+	struct s_plane	*next;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_tuple		center;
-	t_tuple		normal;
-	double		diameter;
-	double		height;
-	t_color		color;
-	t_cylinder	*next;
+	t_tuple				center;
+	t_tuple				normal;
+	double				diameter;
+	double				height;
+	t_color				color;
+	struct s_cylinder	*next;
 }	t_cylinder;
 
 typedef struct s_scene
@@ -85,5 +85,8 @@ typedef struct s_scene
 	t_cylinder	*cylinders;
 
 }	t_scene;
+
+# include "parser.h"
+# include "utils.h"
 
 #endif

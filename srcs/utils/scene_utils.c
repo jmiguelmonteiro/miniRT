@@ -11,13 +11,13 @@ t_scene	*init_scene(void)
 	if (!scene)
 		return (NULL);
 	amb_light.ratio = 0;
-	amb_light.color = color(0, 0, 0);
-	camera.position = point(0, 0, 0);
-	camera.orientation = vector(0, 0, 0);
+//	amb_light.color = color(0, 0, 0);
+//	camera.position = point(0, 0, 0);
+//	camera.orientation = vector(0, 0, 0);
 	camera.fov = 0;
-	light.position = point(0, 0, 0);
+//	light.position = point(0, 0, 0);
 	light.brightness = 0;
-	light.color = color(0, 0, 0);
+//	light.color = color(0, 0, 0);
 	scene->amb_light = amb_light;
 	scene->camera = camera;
 	scene->light = light;
@@ -29,6 +29,7 @@ t_scene	*init_scene(void)
 
 bool	validate_scene(t_scene *scene)
 {
+	(void)scene;
 	return (true);
 }
 
