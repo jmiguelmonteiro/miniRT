@@ -6,7 +6,7 @@
 #    By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 15:17:48 by josemigu          #+#    #+#              #
-#    Updated: 2025/12/03 17:20:11 by josemigu         ###   ########.fr        #
+#    Updated: 2025/12/05 14:48:30 by josemigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,9 @@ SRC_PATH	=	srcs/
 SRC			=	miniRT.c \
 				parser/parser.c \
 				parser/parse_objects.c \
+				parser/parse_objects2.c \
+				parser/parse_elements.c \
+				parser/parse_utils.c \
 				utils/scene_utils.c
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
