@@ -74,21 +74,3 @@ void	print_error(char *message, char *arg, t_scene *scene)
 		free_scene(scene);
 	exit(EXIT_FAILURE);
 }
-
-void	print_scene(t_scene *scene)
-{
-	printf("Scene Details:\n\n");
-	printf("Ambient Light Ratio: %lf\n", scene->amb_light.ratio);
-	printf("Ambient Light Color: (%lf, %lf, %lf)\n", scene->amb_light.color.red,
-		scene->amb_light.color.green, scene->amb_light.color.blue);
-	printf("Camera Position: (%lf, %lf, %lf)\n", scene->camera.position.x,
-		scene->camera.position.y, scene->camera.position.z);
-	printf("Camera Orientation: (%lf, %lf, %lf)\n", scene->camera.orientation.x,
-		scene->camera.orientation.y, scene->camera.orientation.z);
-	printf("Camera FOV: %lf\n", scene->camera.fov);
-	printf("Light Position: (%lf, %lf, %lf)\n", scene->light.position.x,
-		scene->light.position.y, scene->light.position.z);
-	printf("Light Brightness: %lf\n", scene->light.brightness);
-	printf("Light Color: (%lf, %lf, %lf)\n", scene->light.color.red,
-		scene->light.color.green, scene->light.color.blue);
-}

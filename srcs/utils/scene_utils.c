@@ -7,29 +7,25 @@ t_scene	*init_scene(void)
 	t_camera	camera;
 	t_light		light;
 
-	scene = malloc(sizeof(t_scene));
+	scene = ft_calloc(1, sizeof(t_scene));
 	if (!scene)
 		return (NULL);
-	amb_light.ratio = 0;
-//	amb_light.color = color(0, 0, 0);
-//	camera.position = point(0, 0, 0);
-//	camera.orientation = vector(0, 0, 0);
-	camera.fov = 0;
-//	light.position = point(0, 0, 0);
-	light.brightness = 0;
-//	light.color = color(0, 0, 0);
-	scene->amb_light = amb_light;
-	scene->camera = camera;
-	scene->light = light;
-	scene->spheres = NULL;
-	scene->planes = NULL;
-	scene->cylinders = NULL;
+	amb_light.defined = false;
+	camera.defined = false;
+	light.defined = false;
 	return (scene);
 }
 
 bool	validate_scene(t_scene *scene)
 {
-	(void)scene;
+	if (!scene->amb_light.defined)
+		print_error("No ambient light defined.", NULL, scene);
+	if (!scene->camera.defined)
+		print_error("No camera defined.", NULL, scene);
+	if (!scene->light.defined)
+		print_error("No light defined.", NULL, scene);
+	if (!scene->spheres && !scene->planes && !scene->cylinders)
+		print_error("No objects defined.", NULL, scene);
 	return (true);
 }
 

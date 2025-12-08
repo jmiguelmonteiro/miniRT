@@ -44,9 +44,9 @@ t_scene	*parse_scene(char *filename)
 		parse_line(line, scene);
 		free(line);
 	}
-	print_scene(scene);
 	if (!validate_scene(scene))
 		return (free_scene(scene), NULL);
 	close(fd);
+	print_scene(scene); // TODO: remove line
 	return (scene);
 }

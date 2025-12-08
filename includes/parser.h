@@ -1,8 +1,6 @@
 #ifndef PARSER_H
 # define PARSER_H
 
-#include "miniRT.h"
-
 // parser.c
 t_scene	*parse_scene(char *filename);
 void	parse_line(char *line, t_scene *scene);
@@ -11,10 +9,10 @@ void	parse_line(char *line, t_scene *scene);
 void	parse_ambient_light(char *line, t_scene *scene);
 void	parse_camera(char *line, t_scene *scene);
 void	parse_light(char *line, t_scene *scene);
-void	parse_sphere(char *line, t_scene *scene);
-void	parse_plane(char *line, t_scene *scene);
 
 // parse_objects2.c
+void	parse_sphere(char *line, t_scene *scene);
+void	parse_plane(char *line, t_scene *scene);
 void	parse_cylinder(char *line, t_scene *scene);
 
 // parse_elements.c
@@ -27,6 +25,10 @@ void	skip_whitespaces(char **str);
 double	ft_strtod(const char *nptr, char **endptr);
 double	ft_strtoi(const char *nptr, char **endptr);
 void	print_error(char *message, char *arg, t_scene *scene);
+
+// parse_utils2.c
 void	print_scene(t_scene *scene);
+void	print_scene2(t_scene *scene);
+void	print_scene3(t_scene *scene);
 
 #endif
