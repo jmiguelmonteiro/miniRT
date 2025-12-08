@@ -10,75 +10,116 @@
 #                                                                              #
 # **************************************************************************** #
 
-#Program name
-NAME	= miniRT
+# Colors
+RED		= \033[0;31m
+GREEN	= \033[0;32m
+BLUE	= \033[0;34m
+D_BLUE	= \033[34m
+WHITE	= \033[0;37m
+YELLOW	= \033[0;33m
+MAGENTA	= \033[0;35m
+CYAN	= \033[3;36m
+RESET	= \033[0m
 
-# Compiler
-CC				= cc
-CFLAGS			= -Werror -Wextra -Wall
-CFLAGS_EXTRA	= -lXext -lX11 -lm -g
+# Program's name
+NAME		= bin/miniRT
 
-# Minilibx
-MLX_PATH	= minilibx-linux/
-MLX_NAME	= libmlx.a
-MLX			= $(MLX_PATH)$(MLX_NAME)
+# Directories
+SRC_DIR		= ./srcs
+OBJ_DIR		= objs
+BIN_DIR		= bin
+LIBFT_DIR	= ./libs/libft
+MLX_DIR		= ./libs/minilibx-linux
 
-# Libft
-LIBFT_PATH	= libft/
-LIBFT_NAME	= libft.a
-LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
+# Compiler and Flags
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -g
+INCLUDES	= -I./includes -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
 
-# Includes
-INC			=	-I ./includes/ \
-				-I ./libft/includes/ \
-				-I ./minilibx-linux/
+# Handle different OS configurations
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	INCLUDES += -I/usr/include/X11
+	CFLAGS_EXTRA = -L. -lXext -L. -lX11 -lm
+endif
+ifeq ($(UNAME_S),Darwin)
+	INCLUDES += -I/opt/X11/include
+	CFLAGS_EXTRA = -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor -lXinerama -lXxf86vm -lXrender -lX11-xcb -lXfixes -lm
+endif
 
-# Sources
-SRC_PATH	=	srcs/
-SRC			=	miniRT.c \
-				parser/parser.c \
-				parser/parse_objects.c \
-				parser/parse_objects2.c \
-				parser/parse_elements.c \
-				parser/parse_utils.c \
-				utils/scene_utils.c
-SRCS		= $(addprefix $(SRC_PATH), $(SRC))
+# Sources and Objects
+SRCS		= $(wildcard $(SRC_DIR)/*/*.c) $(wildcard $(SRC_DIR)/*.c)
+OBJS		= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRCS:.c=.o))
 
-# Objects
-OBJ_PATH	= objs/
-OBJ			= $(SRC:.c=.o)
-OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+# Libraries
+LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT_FLAGS	= -L$(LIBFT_DIR) -lft
+MLX			= $(MLX_DIR)/libmlx.a
 
-all: $(MLX) $(LIBFT) $(NAME)
+# MinilibX
+MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+# ASCII Art
+define ART
+$(MAGENTA)${D_BLUE}
+	███╗   ███╗██╗███╗   ██╗██╗██████╗ ████████╗
+	████╗ ████║██║████╗  ██║██║██╔══██╗╚══██╔══╝
+	██╔████╔██║██║██╔██╗ ██║██║██████╔╝   ██║
+	██║╚██╔╝██║██║██║╚██╗██║██║██╔══██╗   ██║
+	██║ ╚═╝ ██║██║██║ ╚████║██║██║  ██║   ██║
+	╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝   ╚═╝
+  $(CYAN)━━━━━━━━━━━━━━━━━━━━━━━━━━━[$(RESET)Ray Tracing Engine$(CYAN)]━━━━━━━━━━━━━━━━━━━━━━━━━━━$(RESET)
+endef
+export ART
+
+# Rules
+all: $(NAME)
+
+$(NAME): $(MLX) $(LIBFT) $(OBJS)
+	@mkdir -p $(BIN_DIR)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(INCLUDES) $(LIBFT_FLAGS) $(CFLAGS_EXTRA) -o $(NAME)
+	@clear
+	@echo "$$ART"
+	@echo "$(CYAN)miniRT compiled successfully!$(RESET)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@sleep 0.02
+	@clear
+	@echo "$(RED)Compiling miniRT sources $<$(RESET)"
 
-$(MLX):
-	@echo "Making MiniLibX..."
-	@make -sC $(MLX_PATH)
+clone_mlbx:
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		mkdir -p ./libs; \
+		echo "$(YELLOW)Cloning MiniLibX...$(RESET)"; \
+		git clone $(MINILIBX_REPO) $(MLX_DIR); \
+		echo "$(GREEN)MiniLibX cloned successfully!$(RESET)"; \
+	fi
 
 $(LIBFT):
-	@echo "Making libft..."
-	@make -sC $(LIBFT_PATH)
+	@echo "$(YELLOW)Making libft...$(RESET)"
+	@make --silent -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS)
-	@echo "Making miniRT..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) $(CFLAGS_EXTRA)
-	@echo "miniRT ready."
+$(MLX): clone_mlbx
+	@if [ ! -f "$(MLX)" ]; then \
+		echo "$(YELLOW)Making MiniLibX...$(RESET)"; \
+		make --silent -C $(MLX_DIR) > /dev/null 2>&1; \
+	fi
 
 clean:
-	@echo "Removing .o object files..."
-	@rm -rf $(OBJ_PATH)
-	@make clean -C $(MLX_PATH)
-	@make clean -C $(LIBFT_PATH)
+	@clear
+	@make --silent -C $(LIBFT_DIR) clean
+	@if [ -d "$(MLX_DIR)" ]; then make --silent -C $(MLX_DIR) > /dev/null 2>&1 clean; fi
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(MLX_DIR)
+	@echo "$(GREEN)Object files removed!$(RESET)"
 
 fclean: clean
-	@echo "Removing miniRT..."
-	@rm -f $(NAME)
-	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+	@make --silent -C $(LIBFT_DIR) fclean
+	@rm -rf $(BIN_DIR)
+	@echo "$(GREEN)miniRT removed!$(RESET)"
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all clean fclean re clone_mlbx

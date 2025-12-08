@@ -1,7 +1,8 @@
 #ifndef PARSER_H
 # define PARSER_H
 
-#include "miniRT.h"
+#include <structs.h>
+#include <stdbool.h>
 
 // parser.c
 t_scene	*parse_scene(char *filename);
