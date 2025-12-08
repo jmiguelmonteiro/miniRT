@@ -13,6 +13,8 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+#include <stdbool.h>
+
 typedef struct s_tuple
 {
 	double	x;
@@ -21,7 +23,7 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	double	red;
 	double	green;
@@ -32,6 +34,7 @@ typedef struct s_amb_light
 {
 	double	ratio;
 	t_color	color;
+	bool	defined;
 }	t_amb_light;
 
 typedef struct s_camera
@@ -39,6 +42,7 @@ typedef struct s_camera
 	t_tuple	position;
 	t_tuple	orientation;
 	double	fov;
+	bool	defined;
 }	t_camera;
 
 typedef struct s_light
@@ -46,6 +50,7 @@ typedef struct s_light
 	t_tuple	position;
 	double	brightness;
 	t_color	color;
+	bool	defined;
 }	t_light;
 
 typedef struct s_sphere

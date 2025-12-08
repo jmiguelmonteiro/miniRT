@@ -12,11 +12,17 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+<<<<<<< HEAD
 // internal libs
 
 #include <parser.h>
 #include <structs.h>
 #include <algebra.h>
 #include <utils.h>
+=======
+# include "structs.h"
+# include "parser.h"
+# include "utils.h"
+>>>>>>> main
 
 #endif
