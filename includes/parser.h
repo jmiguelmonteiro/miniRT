@@ -1,6 +1,9 @@
 #ifndef PARSER_H
 # define PARSER_H
 
+#include <structs.h>
+#include <stdbool.h>
+
 // parser.c
 t_scene	*parse_scene(char *filename);
 void	parse_line(char *line, t_scene *scene);

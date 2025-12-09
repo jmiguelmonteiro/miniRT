@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mreinald <mreinald@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/08 22:50:30 by mreinald          #+#    #+#             */
+/*   Updated: 2025/12/08 22:51:14 by mreinald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
-# define STRUCTS_H
+#define STRUCTS_H
+
+#include <stdbool.h>
 
 typedef struct s_tuple
 {
