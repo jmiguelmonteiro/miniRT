@@ -55,4 +55,8 @@ dkms.conf
 minilibx-linux/
 
 # miniRT
-minirt
+miniRT
+
+# misc
+.github/
+.vscode/

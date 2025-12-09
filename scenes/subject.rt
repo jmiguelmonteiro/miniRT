@@ -1,4 +1,4 @@
-# Scene description file
+# Scene description file from subject
 # 
 # A		- ambient lighting
 # C		- camera
@@ -7,7 +7,7 @@
 # pl	- plane
 # cy	- cylinder
 
-A   0.2											255,255,255
+A    0.2		  					255,255,255
 
 C	-50,0,20		0,0,1		70
 L	-40,0,30					0.7				255,255,255
