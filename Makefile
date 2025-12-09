@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/06 15:17:48 by josemigu          #+#    #+#              #
-#    Updated: 2025/12/08 14:44:11 by josemigu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Colors
 RED		= \033[0;31m
 GREEN	= \033[0;32m
@@ -47,23 +35,9 @@ ifeq ($(UNAME_S),Darwin)
 	CFLAGS_EXTRA = -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor -lXinerama -lXxf86vm -lXrender -lX11-xcb -lXfixes -lm
 endif
 
-<<<<<<< HEAD
 # Sources and Objects
 SRCS		= $(wildcard $(SRC_DIR)/*/*.c) $(wildcard $(SRC_DIR)/*.c)
 OBJS		= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRCS:.c=.o))
-=======
-# Sources
-SRC_PATH	=	srcs/
-SRC			=	miniRT.c \
-				parser/parser.c \
-				parser/parse_objects.c \
-				parser/parse_objects2.c \
-				parser/parse_elements.c \
-				parser/parse_utils.c \
-				parser/parse_utils2.c \
-				utils/scene_utils.c
-SRCS		= $(addprefix $(SRC_PATH), $(SRC))
->>>>>>> main
 
 # Libraries
 LIBFT		= $(LIBFT_DIR)/libft.a
