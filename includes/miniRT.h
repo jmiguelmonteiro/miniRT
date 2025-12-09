@@ -14,9 +14,9 @@
 
 // internal libs
 
-#include <parser.h>
-#include <structs.h>
-#include <algebra.h>
-#include <utils.h>
+# include <parser.h>
+# include <structs.h>
+# include <algebra.h>
+# include <utils.h>
 
 #endif

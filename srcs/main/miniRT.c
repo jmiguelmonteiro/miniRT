@@ -5,7 +5,6 @@ int	main(int argc, char **argv)
 	t_scene	*scene;
 
 	(void)argc;
-
 	if (argc != 2)
 	{
 		print_error("Usage: ./miniRT <scene_file>", NULL, NULL);
