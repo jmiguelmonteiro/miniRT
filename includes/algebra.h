@@ -6,8 +6,14 @@
 #include <structs.h>
 
 // Magnitude and normalization
+<<<<<<< HEAD
 void tuple_normalize(t_tuple **v);
 double	tuple_magnitude(t_tuple v);
+=======
+
+void	tuple_normalize(t_tuple *v);
+double	tuple_magnitude(t_tuple *v);
+>>>>>>> a0c497c8a5f82f7f5eb7164d18cd76210f0e6012
 
 // operations
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);

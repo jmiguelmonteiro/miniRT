@@ -46,7 +46,8 @@ t_scene	*parse_scene(char *filename)
 	}
 	if (!validate_scene(scene))
 		return (free_scene(scene), NULL);
+	normalize_scene_tuples(scene);
 	close(fd);
-	print_scene(scene); // TODO: remove line
+	print_scene(scene);
 	return (scene);
 }
