@@ -1,4 +1,4 @@
-#include <algebra.h>
+#include <algebraOperations.h>
 #include <libft.h>
 
 t_matrix	*add_matrices(t_matrix *matrix_a, t_matrix *matrix_b)

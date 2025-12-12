@@ -1,4 +1,4 @@
-#include <algebra.h>
+#include <algebraOperations.h>
 
 void	set_matrix_cel(t_tuple *row, int col, double value)
 {

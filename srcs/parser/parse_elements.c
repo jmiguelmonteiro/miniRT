@@ -1,4 +1,5 @@
-#include "miniRT.h"
+#include <miniRT.h>
+#include <parser.h>
 
 double	parse_double(char **str, t_scene *scene)
 {

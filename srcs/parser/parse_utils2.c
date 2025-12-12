@@ -1,4 +1,5 @@
 #include "miniRT.h"
+#include <parser.h>
 
 void	print_scene(t_scene *scene)
 {

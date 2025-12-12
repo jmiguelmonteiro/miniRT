@@ -1,4 +1,5 @@
 #include "miniRT.h"
+#include <parser.h>
 
 void	parse_ambient_light(char *line, t_scene *scene)
 {

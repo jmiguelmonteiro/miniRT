@@ -1,4 +1,4 @@
-#include <algebra.h>
+#include <algebraOperations.h>
 
 t_tuple	*tuple_scalar_multiply(t_tuple *v, double scalar)
 {

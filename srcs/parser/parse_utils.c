@@ -1,4 +1,6 @@
 #include "miniRT.h"
+#include <parser.h>
+#include <utils.h>
 
 void	skip_whitespaces(char **str)
 {

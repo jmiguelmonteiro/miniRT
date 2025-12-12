@@ -1,6 +1,7 @@
 #include <structs.h>
 #include <miniRT.h>
-
+#include <utils.h>
+#include <parser.h>
 
 int	main(int argc, char **argv)
 {

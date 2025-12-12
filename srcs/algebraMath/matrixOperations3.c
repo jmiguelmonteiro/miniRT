@@ -1,4 +1,4 @@
-#include <algebra.h>
+#include <algebraOperations.h>
 
 double	determinant_3x3(double m[3][3]);
 double	minor(t_matrix *m, int row, int col);

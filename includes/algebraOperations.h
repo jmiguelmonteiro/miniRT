@@ -7,7 +7,7 @@
 
 // Magnitude and normalization
 void	tuple_normalize(t_tuple *v);
-double	tuple_magnitude(t_tuple *v);
+double	tuple_magnitude(t_tuple v);
 
 // operations
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
