@@ -1,28 +1,25 @@
 #include <algebra.h>
 
-double	tuple_magnitude(t_tuple v)
+double	tuple_magnitude(t_tuple *v)
 {
-	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w));
+	return (sqrt(v->x * v->x + v->y * v->y + v->z * v->z + pow(v->w, 2)));
 }
 
-t_tuple	*tuple_normalize(t_tuple *v)
+void	tuple_normalize(t_tuple *v)
 {
 	double	mag;
-	t_tuple	*result;
 
-	result = NULL;
-	mag = tuple_magnitude(*v);
+	mag = tuple_magnitude(v);
 	if (mag == 0.0)
 	{
-		result->x = 0.0;
-		result->y = 0.0;
-		result->z = 0.0;
-		result->w = 0.0;
-		return (result);
+		v->x = 0.0;
+		v->y = 0.0;
+		v->z = 0.0;
+		v->w = 0.0;
+		return ;
 	}
-	result->x = v->x / mag;
-	result->y = v->y / mag;
-	result->z = v->z / mag;
-	result->w = v->w / mag;
-	return (result);
+	v->x = v->x / mag;
+	v->y = v->y / mag;
+	v->z = v->z / mag;
+	v->w = v->w / mag;
 }
