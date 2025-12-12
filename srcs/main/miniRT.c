@@ -1,4 +1,6 @@
+#include <structs.h>
 #include <miniRT.h>
+
 
 int	main(int argc, char **argv)
 {

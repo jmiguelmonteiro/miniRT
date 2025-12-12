@@ -18,6 +18,11 @@ typedef struct s_color
 	double	blue;
 }	t_color;
 
+typedef struct s_matrix
+{
+	t_tuple row[4];
+}	t_matrix;
+
 typedef struct s_amb_light
 {
 	double	ratio;
