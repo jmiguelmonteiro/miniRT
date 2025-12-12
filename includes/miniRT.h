@@ -12,11 +12,4 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-// internal libs
-
-# include <parser.h>
-# include <structs.h>
-# include <algebra.h>
-# include <utils.h>
-
 #endif

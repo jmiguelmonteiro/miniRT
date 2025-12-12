@@ -1,4 +1,6 @@
 #include "miniRT.h"
+#include <parser.h>
+#include <utils.h>
 
 void	parse_line(char *line, t_scene *scene)
 {
