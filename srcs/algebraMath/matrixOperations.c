@@ -29,7 +29,7 @@ t_matrix	*multiply_matrices(t_matrix *matrix_a, t_matrix *matrix_b)
 		return (NULL);
 	result = (t_matrix *)(malloc(sizeof(t_matrix)));
 	if (!result)
-		return (NULL); // warning to handle errors in the caller function
+		return (NULL);
 	while (i < 4)
 	{
 		j = 0;

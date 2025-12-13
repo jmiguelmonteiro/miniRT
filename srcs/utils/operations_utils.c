@@ -18,7 +18,7 @@ double	get_matrix_cel(t_matrix *matrix, int row, int col)
 		return (matrix->row[row].x);
 	else if (col == 1)
 		return (matrix->row[row].y);
-	else if(col == 2)
+	else if (col == 2)
 		return (matrix->row[row].z);
 	else
 		return (matrix->row[row].w);
