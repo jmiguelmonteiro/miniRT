@@ -5,7 +5,7 @@ double	tuple_magnitude(t_tuple v)
 	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w));
 }
 
-void tuple_normalize(t_tuple *v)
+void	tuple_normalize(t_tuple *v)
 {
 	double	mag;
 

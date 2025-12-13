@@ -4,12 +4,13 @@ double	determinant_3x3(double m[3][3]);
 double	minor(t_matrix *m, int row, int col);
 double	cofactor(t_matrix *m, int row, int col);
 
-void	fill_submatrix(t_matrix *m, double sub_matrix[3][3], int skip_r, int ship_c)
+void	fill_submatrix(t_matrix *m, double sub_matrix[3][3],
+						int skip_r, int ship_c)
 {
 	int	row;
 	int	col;
 	int	sub_row;
-	int sub_col;
+	int	sub_col;
 
 	row = -1;
 	sub_row = 0;
