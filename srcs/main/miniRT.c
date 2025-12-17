@@ -1,13 +1,13 @@
-#include <structs.h>
-#include <miniRT.h>
-#include <utils.h>
-#include <parser.h>
+#include "miniRT.h"
+#include "structs.h"
+#include "utils.h"
+#include "parser.h"
+#include "mlx_inc.h"
 
 int	main(int argc, char **argv)
 {
 	t_scene	*scene;
 
-	(void)argc;
 	if (argc != 2)
 	{
 		print_error("Usage: ./miniRT <scene_file>", NULL, NULL);
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 	scene = parse_scene(argv[1]);
 	if (!scene)
 		return (EXIT_FAILURE);
-	free_scene(scene);
-	return (EXIT_SUCCESS);
+	init_mlx(scene);
+	init_mlx_handlers(scene);
+	mlx_loop((*scene).mlx);
+	exit_minirt(EXIT_SUCCESS, scene);
 }

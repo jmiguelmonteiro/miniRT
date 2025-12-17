@@ -72,6 +72,15 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
+typedef struct s_image
+{
+	void	*img_ptr;
+	char	*img_pixels_ptr;
+	int		bits_per_pixel;
+	int		endian;
+	int		line_len;
+}	t_image;
+
 typedef struct s_scene
 {
 	t_amb_light	amb_light;
@@ -80,7 +89,9 @@ typedef struct s_scene
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
-
+	void		*mlx;
+	void		*mlx_win;
+	t_image		mlx_img;
 }	t_scene;
 
 #endif

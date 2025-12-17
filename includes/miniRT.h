@@ -11,5 +11,8 @@
 # include <stdio.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 #endif
