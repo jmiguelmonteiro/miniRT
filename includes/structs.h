@@ -92,6 +92,8 @@ typedef struct s_scene
 	void		*mlx;
 	void		*mlx_win;
 	t_image		mlx_img;
+	int			width;
+	int			height;
 }	t_scene;
 
 #endif

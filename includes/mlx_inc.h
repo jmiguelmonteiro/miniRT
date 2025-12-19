@@ -6,8 +6,8 @@
 # include "utils.h"
 
 // window dimensions
-# define WIDTH 800
-# define HEIGHT 800
+# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	800
 
 // mlx_utils.c
 void	init_mlx(t_scene *scene);
