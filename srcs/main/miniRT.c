@@ -7,10 +7,9 @@ int	main(int argc, char **argv)
 {
 	t_scene	*scene;
 
-	(void)argc;
 	if (argc != 2)
 	{
-		print_error("Usage: ./miniRT <scene_file>", NULL, NULL);
+		print_error(BOLD "Usage: ./miniRT <scene_file>" DEFAULT, NULL, NULL);
 		return (EXIT_FAILURE);
 	}
 	scene = parse_scene(argv[1]);
