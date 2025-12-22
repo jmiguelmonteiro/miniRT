@@ -83,4 +83,20 @@ typedef struct s_scene
 
 }	t_scene;
 
+typedef struct s_hit
+{
+	double		t;
+	t_tuple		point;
+	t_tuple		normal;
+	t_color		color;
+	void		*object;
+	int			object_type;
+}	t_hit;
+
+typedef struct s_ray
+{
+	t_tuple	*origin;
+	t_tuple	*direction;
+}	t_ray;
+
 #endif

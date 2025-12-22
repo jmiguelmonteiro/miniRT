@@ -14,6 +14,7 @@ t_tuple		*tuple_add(t_tuple *a, t_tuple *b);
 t_tuple		*tuple_subtract(t_tuple *a, t_tuple *b);
 double		tuple_dot(t_tuple *a, t_tuple *b);
 t_tuple		*tuple_cross(t_tuple *a, t_tuple *b);
+t_tuple		*tuple_scalar_multiply(t_tuple *v, double scalar);
 
 // Aux. functions
 void		set_matrix_cel(t_tuple *row, int col, double value);
