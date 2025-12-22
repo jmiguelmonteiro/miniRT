@@ -11,6 +11,9 @@ void	parse_sphere(char *line, t_scene *scene)
 			line, scene);
 	sphere->center = parse_tuple(&line, scene, true);
 	sphere->diameter = parse_double(&line, scene);
+	if (sphere->diameter < 0)
+		print_error("Sphere diameter cannot be negative: ",
+			line, scene);
 	sphere->color = parse_color(&line, scene);
 	skip_whitespaces(&line);
 	if (*line != '\0' && *line != '\n')

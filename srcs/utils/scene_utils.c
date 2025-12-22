@@ -1,6 +1,6 @@
 #include "miniRT.h"
-#include <parser.h>
-#include <algebraOperations.h>
+#include "parser.h"
+#include "algebraOperations.h"
 
 t_scene	*init_scene(void)
 {
