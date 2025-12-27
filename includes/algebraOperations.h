@@ -29,4 +29,8 @@ t_matrix	*identity_matrix(void);
 double		determinant(t_matrix *m);
 double		cofactor(t_matrix *m, int row, int col);
 
+// Transformations
+t_matrix	*translation(double x, double y, double z);
+t_matrix	*scaling(double sx, double sy, double sz);
+
 #endif

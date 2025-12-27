@@ -46,11 +46,21 @@ typedef struct s_light
 	bool	defined;
 }	t_light;
 
+typedef struct s_material
+{
+	double	ambient;
+	double	diffuse;
+	double	specular;
+	double	shininess;
+}	t_material;
+
 typedef struct s_sphere
 {
 	t_tuple			center;
 	double			diameter;
 	t_color			color;
+	t_matrix		*transform;
+	t_material		material;
 	struct s_sphere	*next;
 }	t_sphere;
 
