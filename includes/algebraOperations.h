@@ -14,6 +14,7 @@ t_tuple		*tuple_add(t_tuple *a, t_tuple *b);
 t_tuple		*tuple_subtract(t_tuple *a, t_tuple *b);
 double		tuple_dot(t_tuple *a, t_tuple *b);
 t_tuple		*tuple_cross(t_tuple *a, t_tuple *b);
+t_tuple		*tuple_scalar_multiply(t_tuple *v, double scalar);
 
 // Aux. functions
 void		set_matrix_cel(t_tuple *row, int col, double value);
@@ -27,5 +28,9 @@ t_matrix	*transpose_matrix(t_matrix *m);
 t_matrix	*identity_matrix(void);
 double		determinant(t_matrix *m);
 double		cofactor(t_matrix *m, int row, int col);
+
+// Transformations
+t_matrix	*translation(double x, double y, double z);
+t_matrix	*scaling(double sx, double sy, double sz);
 
 #endif
