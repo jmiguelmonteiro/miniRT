@@ -13,5 +13,6 @@ double	get_closest_intersection(double *t_values, int count);
 t_hit	*ray_hit_sphere(t_ray *ray, t_sphere *sphere);
 t_hit	*create_hit(double t, t_ray *ray, t_sphere *sphere);
 void	free_hit(t_hit *hit);
+t_ray	*transform_ray(t_ray *ray, t_matrix *matrix);
 
 #endif
