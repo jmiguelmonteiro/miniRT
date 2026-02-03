@@ -16,9 +16,6 @@ t_material	default_material(void)
 t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
 {
 	t_sphere	*sphere;
-	t_matrix	*translation_m;
-	t_matrix	*scaling_m;
-	double		radius;
 
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
@@ -27,12 +24,12 @@ t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
 	sphere->diameter = diameter;
 	sphere->color = color;
 	sphere->material = default_material();
-	radius = diameter / 2.0;
-	translation_m = translation(center.x, center.y, center.z);
-	scaling_m = scaling(radius, radius, radius);
-	sphere->transform = multiply_matrices(translation_m, scaling_m);
-	free(translation_m);
-	free(scaling_m);
+	sphere->transform = identity_matrix();
+	if (!sphere->transform)
+	{
+		free(sphere);
+		return (NULL);
+	}
 	sphere->next = NULL;
 	return (sphere);
 }

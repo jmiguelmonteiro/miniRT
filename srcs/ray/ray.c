@@ -3,55 +3,55 @@
 #include <structs.h>
 #include <ray.h>
 
-static double	calculate_discriminant(t_ray *ray, t_sphere *sphere)
+static double	calculate_discriminant_unit_sphere(t_ray *object_ray)
 {
-	t_tuple		*sphere_to_ray;
 	double		a;
 	double		b;
 	double		c;
-	double		discriminant;
 
-	sphere_to_ray = tuple_subtract(ray->origin, &sphere->center);
-	if (!sphere_to_ray)
-		return (-1.0);
-	a = tuple_dot(ray->direction, ray->direction);
-	b = 2.0 * tuple_dot(ray->direction, sphere_to_ray);
-	c = tuple_dot(sphere_to_ray, sphere_to_ray);
-	c -= pow(sphere->diameter / 2.0, 2);
-	discriminant = b * b - 4 * a * c;
-	free(sphere_to_ray);
-	return (discriminant);
+	a = tuple_dot(object_ray->direction, object_ray->direction);
+	b = 2.0 * tuple_dot(object_ray->direction, object_ray->origin);
+	c = tuple_dot(object_ray->origin, object_ray->origin) - 1.0;
+	return (b * b - 4.0 * a * c);
 }
 
-static void	calculate_intersections(t_ray *ray, t_sphere *sphere,
+static void	calculate_intersections_unit_sphere(t_ray *object_ray,
 				double discriminant, double *t)
 {
-	t_tuple		*sphere_to_ray;
 	double		a;
 	double		b;
 	double		sqrt_disc;
 
-	sphere_to_ray = tuple_subtract(ray->origin, &sphere->center);
-	if (!sphere_to_ray)
-		return ;
-	a = tuple_dot(ray->direction, ray->direction);
-	b = 2.0 * tuple_dot(ray->direction, sphere_to_ray);
+	a = tuple_dot(object_ray->direction, object_ray->direction);
+	b = 2.0 * tuple_dot(object_ray->direction, object_ray->origin);
 	sqrt_disc = sqrt(discriminant);
 	t[0] = (-b - sqrt_disc) / (2.0 * a);
 	t[1] = (-b + sqrt_disc) / (2.0 * a);
-	free(sphere_to_ray);
 }
 
 bool	intersect_sphere(t_ray *ray, t_sphere *sphere, double *t_values)
 {
-	double	discriminant;
+	t_matrix	*inverse;
+	t_ray		*object_ray;
+	double		discriminant;
 
 	if (!ray || !sphere || !t_values)
 		return (false);
-	discriminant = calculate_discriminant(ray, sphere);
-	if (discriminant < 0)
+	inverse = inverse_matrix(sphere->transform);
+	if (!inverse)
 		return (false);
-	calculate_intersections(ray, sphere, discriminant, t_values);
+	object_ray = transform_ray(ray, inverse);
+	free(inverse);
+	if (!object_ray)
+		return (false);
+	discriminant = calculate_discriminant_unit_sphere(object_ray);
+	if (discriminant < 0)
+	{
+		free_ray(object_ray);
+		return (false);
+	}
+	calculate_intersections_unit_sphere(object_ray, discriminant, t_values);
+	free_ray(object_ray);
 	return (true);
 }
 
