@@ -27,13 +27,37 @@ t_tuple	*ray_position(t_ray *ray, double t)
 	return (result);
 }
 
-t_tuple	*sphere_normal_at(t_sphere *sphere, t_tuple *point)
+t_tuple	*sphere_normal_at(t_sphere *sphere, t_tuple *world_point)
 {
-	t_tuple	*world_normal;
+	t_matrix	*inverse;
+	t_matrix	*inverse_transpose;
+	t_tuple		*object_point;
+	t_tuple		object_normal;
+	t_tuple		*world_normal;
 
-	world_normal = tuple_subtract(point, &sphere->center);
+	inverse = inverse_matrix(sphere->transform);
+	if (!inverse)
+		return (NULL);
+	object_point = matrix_multiply_tuple(inverse, world_point);
+	if (!object_point)
+	{
+		free(inverse);
+		return (NULL);
+	}
+	object_normal.x = object_point->x;
+	object_normal.y = object_point->y;
+	object_normal.z = object_point->z;
+	object_normal.w = 0.0;
+	free(object_point);
+	inverse_transpose = transpose_matrix(inverse);
+	free(inverse);
+	if (!inverse_transpose)
+		return (NULL);
+	world_normal = matrix_multiply_tuple(inverse_transpose, &object_normal);
+	free(inverse_transpose);
 	if (!world_normal)
 		return (NULL);
+	world_normal->w = 0.0;
 	tuple_normalize(world_normal);
 	return (world_normal);
 }
