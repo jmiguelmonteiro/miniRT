@@ -23,7 +23,7 @@ void	find_closest_hit_sphere(t_ray *ray, t_scene *scene, t_hit *closest_hit)
 	while (sphere)
 	{
 		temp_hit = ray_hit_sphere(ray, sphere);
-		if (temp_hit && temp_hit->t < closest_hit->t) 
+		if (temp_hit && temp_hit->t > EPSILON && temp_hit->t < closest_hit->t) 
 		{
 			*closest_hit = *temp_hit;
 			free(temp_hit);
