@@ -17,16 +17,18 @@ t_color	apply_ambient(t_color obj_color, t_scene *scene)
 
 t_color	apply_diffuse(t_hit *hit, t_light light, t_color obj_color)
 {
-	t_tuple	light_dir;
+	t_tuple	*light_dir;
 	double	diffuse_intensity;
 	t_color	result;
 
-	light_dir = tuple_normalize(tuple_subtract(light.position, hit->point));
-	diffuse_intensity = fmax(0.0, tuple_dot(hit->normal, light_dir));
+	light_dir = tuple_subtract(&light.position, &hit->point);
+	tuple_normalize(light_dir);
+	diffuse_intensity = fmax(0.0, tuple_dot(&hit->normal, light_dir));
 	diffuse_intensity *= light.brightness;
 	result.red = obj_color.red * diffuse_intensity;
 	result.green = obj_color.green * diffuse_intensity;
 	result.blue = obj_color.blue * diffuse_intensity;
+	free(light_dir);
 	return (result);
 }
 
@@ -36,9 +38,9 @@ bool	is_in_shadow(t_tuple point, t_light light, t_scene *scene)
 	t_hit	shadow_hit;
 	double	light_distance;
 
-	shadow_ray.origin = tuple_add(point, tuple_scalar_multiply(tuple_normalize(point)), 0.001);
-	shadow_ray.direction = tuple_normalize(tuple_subtract(light.position, point));
-	light_distance = tuple_magnitude(tuple_subtract(light.position, point));
+	shadow_ray.origin = tuple_add(&point, tuple_scalar_multiply(tuple_normalize(&point), 0.001));
+	shadow_ray.direction = tuple_normalize(tuple_subtract(&light.position, &point));
+	light_distance = tuple_magnitude(tuple_subtract(&light.position, &point));
 
     // Check if anything blocks the light
     // Use Person A's find_closest_hit but check if t < light_distance
@@ -53,11 +55,12 @@ t_color	calculate_lighting(t_hit *hit, t_scene *scene, t_ray ray)
 	t_color	ambient;
 	t_color	diffuse;
 
+	(void)ray;
 	ambient = apply_ambient(hit->color, scene);
 	final_color = ambient;
 	if (is_in_shadow(hit->point, scene->light, scene))
 		return (final_color);
-	diffuse(apply_diffuse(hit, scene->light, hit->color));
+	diffuse = apply_diffuse(hit, scene->light, hit->color);
 	final_color.red = fmin(255, final_color.red + diffuse.red);
 	final_color.green = fmin(255, final_color.green + diffuse.green);
 	final_color.blue = fmin(255, final_color.blue + diffuse.blue);
