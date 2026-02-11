@@ -14,6 +14,7 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 
 // Basic colors
 # define DEFAULT "\033[0;39m"

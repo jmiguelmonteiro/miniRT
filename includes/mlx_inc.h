@@ -1,7 +1,6 @@
 #ifndef MLX_INC_H
 # define MLX_INC_H
 
-# include "miniRT.h"
 # include "structs.h"
 # include "utils.h"
 
