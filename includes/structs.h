@@ -3,6 +3,14 @@
 
 # include <stdbool.h>
 
+// Object type identifiers
+typedef enum e_object_type
+{
+	OBJ_SPHERE,
+	OBJ_PLANE,
+	OBJ_CYLINDER
+}	t_object_type;
+
 typedef struct s_tuple
 {
 	double	x;
