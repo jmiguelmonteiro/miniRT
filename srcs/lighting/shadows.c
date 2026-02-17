@@ -1,35 +1,34 @@
 #include "miniRT.h"
 #include "structs.h"
-
-static t_ray	*create_shadow_ray(t_tuple point, t_tuple offset, 
-				t_tuple to_light);
-static bool		is_path_blocked(t_ray *shadow_ray, t_scene *scene, 
-				double light_distance);
+#include "algebraOperations.h"
+#include "ray.h"
+#include "lighting.h"
 
 bool	is_in_shadow(t_hit *hit, t_light *light, t_scene *scene)
 {
 	t_ray	*shadow_ray;
-	t_tuple	offset;
-	t_tuple	to_light;
+	t_tuple	*offset;
+	t_tuple	*to_light;
 	double	light_distance;
 	bool	blocked;
 
-	to_light = tuple_sub(light->position, hit->point);
-	light_distance = tuple_length(to_light);
-	offset = tuple_mult(hit->normal, EPSILON);
-	shadow_ray = create_shadow_ray(hit->point, offset, to_light);
+	to_light = tuple_subtract(&light->position, &hit->point);
+	light_distance = tuple_magnitude(*to_light);
+	offset = tuple_scalar_multiply(&hit->normal, EPSILON);
+	shadow_ray = create_shadow_ray(hit->point, *offset, *to_light);
 	if (!shadow_ray)
 		return (false);
 	blocked = is_path_blocked(shadow_ray, scene, light_distance);
 	free_ray(shadow_ray);
+	free(offset);
+	free(to_light);
 	return (blocked);
 }
 
-static t_ray	*create_shadow_ray(t_tuple point, t_tuple offset, 
-				t_tuple to_light)
+t_ray	*create_shadow_ray(t_tuple point, t_tuple offset, t_tuple to_light)
 {
 	t_ray	*shadow_ray;
-	t_tuple	origin;
+	t_tuple	*origin;
 	t_tuple	direction;
 
 	shadow_ray = malloc(sizeof(t_ray));
@@ -42,20 +41,22 @@ static t_ray	*create_shadow_ray(t_tuple point, t_tuple offset,
 		free_ray(shadow_ray);
 		return (NULL);
 	}
-	origin = tuple_add(point, offset);
-	*shadow_ray->origin = origin;
-	direction = tuple_normalize(to_light);
+	origin = tuple_add(&point, &offset);
+	*shadow_ray->origin = *origin;
+	direction = to_light;
+	tuple_normalize(&direction);
 	*shadow_ray->direction = direction;
+	free(origin);
 	return (shadow_ray);
 }
 
-static bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene, 
+bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 			double light_distance)
 {
+	t_hit		*hit;
 	t_sphere	*sphere;
 	// t_plane		*plane;
 	// t_cylinder	*cylinder;
-	t_hit		*hit;
 
 	sphere = scene->spheres;
 	while (sphere)

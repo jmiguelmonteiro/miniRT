@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "parser.h"
 #include "mlx_inc.h"
+#include "render.h"
 
 int	main(int argc, char **argv)
 {
@@ -18,6 +19,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	init_mlx(scene);
 	init_mlx_handlers(scene);
+	render_scene(scene);
 	mlx_loop((*scene).mlx);
 	exit_minirt(EXIT_SUCCESS, scene);
 }
