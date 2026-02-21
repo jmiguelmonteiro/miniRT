@@ -1,5 +1,6 @@
 #include "miniRT.h"
 #include "structs.h"
+#include <ray.h>
 
 static t_ray	*create_shadow_ray(t_tuple point, t_tuple offset, 
 				t_tuple to_light);

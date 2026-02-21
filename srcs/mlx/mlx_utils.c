@@ -28,7 +28,7 @@ void	init_mlx(t_scene *scene)
 			scene->mlx,
 			scene->width,
 			scene->height,
-			"miniRT by josemigu and mreinald");
+			"miniRT by josemigu and tmatheusdiniz");
 	if (!scene->mlx_win)
 		exit_minirt(EXIT_FAILURE, scene);
 	scene->mlx_img.img_ptr = mlx_new_image(
