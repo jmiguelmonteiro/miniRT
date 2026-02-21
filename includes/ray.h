@@ -14,5 +14,6 @@ t_hit	*ray_hit_sphere(t_ray *ray, t_sphere *sphere);
 t_hit	*create_hit(double t, t_ray *ray, t_sphere *sphere);
 void	free_hit(t_hit *hit);
 t_ray	*transform_ray(t_ray *ray, t_matrix *matrix);
+t_ray	*create_camera_ray(t_scene *scene, int x, int y);
 
 #endif
