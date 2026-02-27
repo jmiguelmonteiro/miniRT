@@ -4,12 +4,8 @@
 # include "structs.h"
 # include "utils.h"
 
-// window dimensions
-# define WINDOW_WIDTH	800
-# define WINDOW_HEIGHT	800
-
 // mlx_utils.c
-void	init_mlx(t_scene *scene);
+bool	init_mlx(t_scene *scene);
 void	free_mlx(t_scene *scene);
 
 // mlx_handlers.c
