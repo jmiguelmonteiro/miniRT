@@ -11,6 +11,7 @@ void	render_scene(t_scene *scene)
 	t_ray	*ray;
 	t_color	color;
 
+	printf("Rendering...\n");
 	y = 0;
 	while (y < scene->height)
 	{
@@ -25,6 +26,7 @@ void	render_scene(t_scene *scene)
 		}
 		y++;
 	}
+	printf("Rendering complete!\n");
 }
 
 t_color	trace_ray(t_ray *ray, t_scene *scene)
