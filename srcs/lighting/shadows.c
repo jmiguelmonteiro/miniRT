@@ -62,7 +62,7 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 	while (sphere)
 	{
 		hit = ray_hit_sphere(shadow_ray, sphere);
-		if (hit && hit->t > EPSILON && hit->t < light_distance)
+		if (hit && (hit->t > EPSILON) && (hit->t < light_distance))
 			return (free(hit), true);
 		if (hit)
 			free(hit);
