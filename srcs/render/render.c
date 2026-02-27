@@ -8,8 +8,8 @@ void	render_scene(t_scene *scene)
 {
 	int		x;
 	int		y;
-	// t_ray	ray;
-	// t_color	color;
+	t_ray	*ray;
+	t_color	color;
 
 	y = 0;
 	while (y < scene->height)
@@ -17,11 +17,10 @@ void	render_scene(t_scene *scene)
 		x = 0;
 		while (x < scene->width)
 		{
-			// ray = create_camera_ray(&scene->camera, x, y, 
-			//                         scene->width, scene->height);
-			// color = trace_ray(&ray, scene);
-			// put_pixel(scene, x, y, color);
-			// free_ray(&ray);
+			ray = create_camera_ray(scene, x, y);
+			color = trace_ray(ray, scene);
+			put_pixel(scene, x, y, color);
+			free_ray(ray);
 			x++;
 		}
 		y++;
