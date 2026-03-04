@@ -11,7 +11,7 @@ static double	calculate_discriminant_unit_sphere(t_ray *object_ray)
 
 	a = tuple_dot(object_ray->direction, object_ray->direction);
 	b = 2.0 * tuple_dot(object_ray->direction, object_ray->origin);
-	c = tuple_dot(object_ray->origin, object_ray->origin) - 1.0;
+	c = tuple_dot(object_ray->origin, object_ray->origin) - 2.0;
 	return (b * b - 4.0 * a * c);
 }
 

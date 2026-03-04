@@ -5,16 +5,10 @@
 t_scene	*init_scene(void)
 {
 	t_scene		*scene;
-	t_amb_light	amb_light;
-	t_camera	camera;
-	t_light		light;
 
 	scene = ft_calloc(1, sizeof(t_scene));
 	if (!scene)
 		return (NULL);
-	amb_light.defined = false;
-	camera.defined = false;
-	light.defined = false;
 	return (scene);
 }
 
