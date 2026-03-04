@@ -1,23 +1,26 @@
 #include "miniRT.h"
-#include <parser.h>
+#include "parser.h"
+#include "objects.h"
 
 void	parse_sphere(char *line, t_scene *scene)
 {
+	t_tuple		center;
+	double		diameter;
+	t_color		color;
 	t_sphere	*sphere;
 
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
-		print_error("Error allocating memory for sphere definition: ",
-			line, scene);
-	sphere->center = parse_tuple(&line, scene, true);
-	sphere->diameter = parse_double(&line, scene);
-	if (sphere->diameter < 0)
-		print_error("Sphere diameter cannot be negative: ",
-			line, scene);
-	sphere->color = parse_color(&line, scene);
+	center = parse_tuple(&line, scene, true);
+	diameter = parse_double(&line, scene);
+	if (diameter < 0)
+		print_error("Sphere diameter cannot be negative: ",	line, scene);
+	color = parse_color(&line, scene);
 	skip_whitespaces(&line);
 	if (*line != '\0' && *line != '\n')
 		print_error("Unexpected characters after sphere definition: ",
+			line, scene);
+	sphere = create_sphere(center, diameter, color);
+	if (!sphere)
+		print_error("Error allocating memory for sphere definition: ",
 			line, scene);
 	sphere->next = scene->spheres;
 	scene->spheres = sphere;
