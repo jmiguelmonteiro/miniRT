@@ -82,7 +82,7 @@ t_hit	*create_hit(double t, t_ray *ray, t_sphere *sphere)
 	hit->normal = *normal;
 	hit->color = sphere->color;
 	hit->object = sphere;
-	hit->object_type = 1;
+	hit->object_type = OBJ_SPHERE;
 	free(point);
 	free(normal);
 	return (hit);

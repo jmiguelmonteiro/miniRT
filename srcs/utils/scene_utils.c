@@ -12,7 +12,7 @@ t_scene	*init_scene(void)
 	return (scene);
 }
 
-bool	validate_scene(t_scene *scene)
+void	validate_scene(t_scene *scene)
 {
 	if (!scene->amb_light.defined)
 		print_error("No ambient light defined.", NULL, scene);
@@ -22,7 +22,6 @@ bool	validate_scene(t_scene *scene)
 		print_error("No light defined.", NULL, scene);
 	if (!scene->spheres && !scene->planes && !scene->cylinders)
 		print_error("No objects defined.", NULL, scene);
-	return (true);
 }
 
 void	normalize_scene_tuples(t_scene *scene)
@@ -54,6 +53,7 @@ void	free_scene(t_scene *scene)
 	while (scene->spheres)
 	{
 		next_sphere = scene->spheres->next;
+		free(scene->spheres->transform);
 		free(scene->spheres);
 		scene->spheres = next_sphere;
 	}

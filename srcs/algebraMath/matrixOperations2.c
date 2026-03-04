@@ -62,7 +62,7 @@ t_matrix	*transpose_matrix(t_matrix *m)
 		j = 0;
 		while (j < 4)
 		{
-			set_matrix_cel(result->row, j, get_matrix_cel(m, j, i));
+			set_matrix_cel(&result->row[i], j, get_matrix_cel(m, j, i));
 			j++;
 		}
 		i++;
