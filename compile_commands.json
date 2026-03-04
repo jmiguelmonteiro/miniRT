@@ -1,0 +1,610 @@
+[
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/matrixOperations2.c",
+   "-o",
+   "objs/algebraMath/matrixOperations2.o"
+  ],
+  "file": "srcs/algebraMath/matrixOperations2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/matrixOperations3.c",
+   "-o",
+   "objs/algebraMath/matrixOperations3.o"
+  ],
+  "file": "srcs/algebraMath/matrixOperations3.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/matrixOperations.c",
+   "-o",
+   "objs/algebraMath/matrixOperations.o"
+  ],
+  "file": "srcs/algebraMath/matrixOperations.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/matrixTupleOperations.c",
+   "-o",
+   "objs/algebraMath/matrixTupleOperations.o"
+  ],
+  "file": "srcs/algebraMath/matrixTupleOperations.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/transformation2.c",
+   "-o",
+   "objs/algebraMath/transformation2.o"
+  ],
+  "file": "srcs/algebraMath/transformation2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/transformation.c",
+   "-o",
+   "objs/algebraMath/transformation.o"
+  ],
+  "file": "srcs/algebraMath/transformation.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/tupleOperations2.c",
+   "-o",
+   "objs/algebraMath/tupleOperations2.o"
+  ],
+  "file": "srcs/algebraMath/tupleOperations2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/tupleOperations3.c",
+   "-o",
+   "objs/algebraMath/tupleOperations3.o"
+  ],
+  "file": "srcs/algebraMath/tupleOperations3.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/algebraMath/tupleOperations.c",
+   "-o",
+   "objs/algebraMath/tupleOperations.o"
+  ],
+  "file": "srcs/algebraMath/tupleOperations.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/lighting/color2.c",
+   "-o",
+   "objs/lighting/color2.o"
+  ],
+  "file": "srcs/lighting/color2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/lighting/color.c",
+   "-o",
+   "objs/lighting/color.o"
+  ],
+  "file": "srcs/lighting/color.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/lighting/lighting.c",
+   "-o",
+   "objs/lighting/lighting.o"
+  ],
+  "file": "srcs/lighting/lighting.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/lighting/shadows.c",
+   "-o",
+   "objs/lighting/shadows.o"
+  ],
+  "file": "srcs/lighting/shadows.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/main/miniRT.c",
+   "-o",
+   "objs/main/miniRT.o"
+  ],
+  "file": "srcs/main/miniRT.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/mlx/mlx_handlers.c",
+   "-o",
+   "objs/mlx/mlx_handlers.o"
+  ],
+  "file": "srcs/mlx/mlx_handlers.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/mlx/mlx_utils.c",
+   "-o",
+   "objs/mlx/mlx_utils.o"
+  ],
+  "file": "srcs/mlx/mlx_utils.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parse_elements.c",
+   "-o",
+   "objs/parser/parse_elements.o"
+  ],
+  "file": "srcs/parser/parse_elements.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parse_objects2.c",
+   "-o",
+   "objs/parser/parse_objects2.o"
+  ],
+  "file": "srcs/parser/parse_objects2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parse_objects.c",
+   "-o",
+   "objs/parser/parse_objects.o"
+  ],
+  "file": "srcs/parser/parse_objects.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parser.c",
+   "-o",
+   "objs/parser/parser.o"
+  ],
+  "file": "srcs/parser/parser.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parse_utils2.c",
+   "-o",
+   "objs/parser/parse_utils2.o"
+  ],
+  "file": "srcs/parser/parse_utils2.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/parser/parse_utils.c",
+   "-o",
+   "objs/parser/parse_utils.o"
+  ],
+  "file": "srcs/parser/parse_utils.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/ray/create_camera.c",
+   "-o",
+   "objs/ray/create_camera.o"
+  ],
+  "file": "srcs/ray/create_camera.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/ray/ray.c",
+   "-o",
+   "objs/ray/ray.o"
+  ],
+  "file": "srcs/ray/ray.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/ray/rayOperations.c",
+   "-o",
+   "objs/ray/rayOperations.o"
+  ],
+  "file": "srcs/ray/rayOperations.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/ray/rayTransform.c",
+   "-o",
+   "objs/ray/rayTransform.o"
+  ],
+  "file": "srcs/ray/rayTransform.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/render/intersection.c",
+   "-o",
+   "objs/render/intersection.o"
+  ],
+  "file": "srcs/render/intersection.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/render/render.c",
+   "-o",
+   "objs/render/render.o"
+  ],
+  "file": "srcs/render/render.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/sphere/sphere.c",
+   "-o",
+   "objs/sphere/sphere.o"
+  ],
+  "file": "srcs/sphere/sphere.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/utils/operations_utils.c",
+   "-o",
+   "objs/utils/operations_utils.o"
+  ],
+  "file": "srcs/utils/operations_utils.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/utils/scene_utils.c",
+   "-o",
+   "objs/utils/scene_utils.o"
+  ],
+  "file": "srcs/utils/scene_utils.c"
+ },
+ {
+  "directory": "/sgoinfre/mreinald/Repositories/Rank 4/miniRT",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I./includes",
+   "-I./libs/libft/includes",
+   "-I./libs/minilibx-linux",
+   "-I/usr/include/X11",
+   "-c",
+   "srcs/utils/utils.c",
+   "-o",
+   "objs/utils/utils.o"
+  ],
+  "file": "srcs/utils/utils.c"
+ }
+]
