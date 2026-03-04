@@ -73,7 +73,7 @@ double	determinant(t_matrix *m)
 	col = 0;
 	while (col < 4)
 	{
-		det += get_matrix_cel(m, 0, col) * cofactor(m, 0, col);
+		det += cofactor(m, 0, col) * get_matrix_cel(m, 0, col);
 		col++;
 	}
 	return (det);

@@ -2,16 +2,7 @@
 #include <algebraOperations.h>
 #include <structs.h>
 
-t_material	default_material(void)
-{
-	t_material	mat;
-
-	mat.ambient = 0.1;
-	mat.diffuse = 0.9;
-	mat.specular = 0.9;
-	mat.shininess = 200.0;
-	return (mat);
-}
+t_material	default_material(void);
 
 t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
 {
@@ -33,6 +24,18 @@ t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
 	sphere->next = NULL;
 	return (sphere);
 }
+
+t_material	default_material(void)
+{
+	t_material	mat;
+
+	mat.ambient = 0.1;
+	mat.diffuse = 0.9;
+	mat.specular = 0.9;
+	mat.shininess = 200.0;
+	return (mat);
+}
+
 
 void	set_sphere_transform(t_sphere *sphere, t_matrix *transform)
 {
