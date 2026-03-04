@@ -6,7 +6,6 @@ void	parse_line(char *line, t_scene *scene)
 {
 	if (!line || !*line || *line == '\n')
 		return ;
-	(void)scene;
 	skip_whitespaces(&line);
 	if (*line == '#')
 		return ;
@@ -46,8 +45,7 @@ t_scene	*parse_scene(char *filename)
 		parse_line(line, scene);
 		free(line);
 	}
-	if (!validate_scene(scene))
-		return (free_scene(scene), NULL);
+	validate_scene(scene);
 	normalize_scene_tuples(scene);
 	close(fd);
 	print_scene(scene);
