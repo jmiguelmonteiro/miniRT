@@ -60,3 +60,4 @@ miniRT
 # misc
 .github/
 .vscode/
+.cache/
