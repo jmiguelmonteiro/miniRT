@@ -60,4 +60,6 @@ miniRT
 # misc
 .github/
 .vscode/
+
+#clang
 .cache/

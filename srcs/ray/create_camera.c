@@ -29,6 +29,7 @@ static t_matrix	*build_orient(t_camera *cam)
 	left = tuple_cross(&cam->orientation, &world_up);
 	tuple_normalize(left);
 	true_up = tuple_cross(left, &cam->orientation);
+	tuple_normalize(true_up);
 	orient = identity_matrix();
 	set_matrix_cel(&orient->row[0], 0, left->x);
 	set_matrix_cel(&orient->row[0], 1, left->y);
@@ -82,7 +83,7 @@ static t_tuple	get_canvas_pt(t_scene *scene, int x, int y)
 		hh = half_view;
 	}
 	pt.x = hw - (x + 0.5) * (hw * 2.0 / scene->width);
-	pt.y = hh - (y + 0.5) * (hw * 2.0 / scene->width);
+	pt.y = hh - (y + 0.5) * (hh * 2.0 / scene->height);
 	pt.z = -1.0;
 	pt.w = 1.0;
 	return (pt);
@@ -95,11 +96,17 @@ t_ray	*create_camera_ray(t_scene *scene, int x, int y)
 	t_tuple		*pixel;
 	t_tuple		*origin;
 	t_tuple		*dir;
+	t_tuple	cam_origin;
 
+
+	cam_origin.x = 0.0;
+	cam_origin.y = 0.0;
+	cam_origin.z = 0.0;
+	cam_origin.w = 1.0;
 	inv = build_view_inv(&scene->camera);
 	canvas_pt = get_canvas_pt(scene, x, y);
 	pixel = matrix_multiply_tuple(inv, &canvas_pt);
-	origin = matrix_multiply_tuple(inv, &scene->camera.position);
+	origin = matrix_multiply_tuple(inv, &cam_origin);
 	free(inv);
 	dir = tuple_subtract(pixel, origin);
 	tuple_normalize(dir);

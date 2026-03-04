@@ -2,6 +2,7 @@
 #include "lighting.h"
 #include "algebraOperations.h"
 #include "render.h"
+#include "structs.h"
 
 t_color	apply_ambient(t_color obj_color, t_scene *scene)
 {
@@ -17,13 +18,14 @@ t_color	apply_diffuse(t_hit *hit, t_light light, t_color obj_color)
 	t_color	diffuse;
 	t_tuple	*light_dir;
 	double	diffuse_intensity;
+	t_color	mixed;
 
 	light_dir = tuple_subtract(&light.position, &hit->point);
 	tuple_normalize(light_dir);
 	diffuse_intensity = fmax(0.0, tuple_dot(&hit->normal, light_dir));
 	diffuse_intensity *= light.brightness;
-	diffuse = color_multiply(obj_color, light.color);
-	diffuse = color_mult(obj_color, diffuse_intensity);
+	mixed = color_multiply(obj_color, light.color);
+	diffuse = color_mult(mixed, diffuse_intensity);
 	free(light_dir);
 	return (diffuse);
 }
