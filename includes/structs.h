@@ -77,6 +77,8 @@ typedef struct s_plane
 	t_tuple			point;
 	t_tuple			normal;
 	t_color			color;
+	t_matrix		*transform;
+	t_material		material;
 	struct s_plane	*next;
 }	t_plane;
 

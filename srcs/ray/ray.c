@@ -73,18 +73,3 @@ double	get_closest_intersection(double *t_values, int count)
 	}
 	return (closest);
 }
-
-t_hit	*ray_hit_sphere(t_ray *ray, t_sphere *sphere)
-{
-	double	t_values[2];
-	double	closest_t;
-	t_hit	*hit;
-
-	if (!intersect_sphere(ray, sphere, t_values))
-		return (NULL);
-	closest_t = get_closest_intersection(t_values, 2);
-	if (closest_t < 0)
-		return (NULL);
-	hit = create_hit(closest_t, ray, sphere);
-	return (hit);
-}

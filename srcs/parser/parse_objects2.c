@@ -64,8 +64,9 @@ void	parse_cylinder(char *line, t_scene *scene)
 	if (*line != '\0' && *line != '\n')
 		print_error("Unexpected characters after cylinder definition: ",
 			line, scene);
-	cylinder = create_cylinder(center, normal, diameter, height,
-			parse_color(&line, scene));
+	//cylinder = create_cylinder(center, normal, diameter, height,
+	//		parse_color(&line, scene));
+	cylinder = NULL;
 	if (!cylinder)
 		print_error("Error allocating memory for cylinder definition: ",
 			line, scene);

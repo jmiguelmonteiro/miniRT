@@ -4,6 +4,9 @@
 #include "ray.h"
 #include "lighting.h"
 
+bool	is_path_blocked_cylinder(t_ray *shadow_ray, t_scene *scene,
+			double light_distance);
+
 bool	is_in_shadow(t_hit *hit, t_light *light, t_scene *scene)
 {
 	t_ray	*shadow_ray;
@@ -89,7 +92,9 @@ bool	is_path_blocked_cylinder(t_ray *shadow_ray, t_scene *scene,
 	cylinder = scene->cylinders;
 	while (cylinder)
 	{
-		hit = ray_hit_cylinder(shadow_ray, cylinder);
+		free (shadow_ray); // to discard
+		hit = NULL; // to discard
+		//hit = ray_hit_cylinder(shadow_ray, cylinder);
 		if (hit && hit->t > EPSILON && hit->t < light_distance)
 			return (free(hit), true);
 		free_hit(hit);
