@@ -38,4 +38,9 @@ double		cofactor(t_matrix *m, int row, int col);
 t_matrix	*translation(double x, double y, double z);
 t_matrix	*scaling(double sx, double sy, double sz);
 
+// Rotations
+t_matrix	*rotation_x(double angle);
+t_matrix	*rotation_y(double angle);
+t_matrix	*rotation_z(double angle);
+
 #endif
