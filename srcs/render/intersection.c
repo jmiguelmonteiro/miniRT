@@ -10,7 +10,7 @@ t_hit	find_closest_hit(t_ray *ray, t_scene *scene)
 	closest_hit.t = INFINITY;
 	find_closest_hit_sphere(ray, scene, &closest_hit);
 	find_closest_hit_plane(ray, scene, &closest_hit);
-	find_closest_hit_cylinder(ray, scene, &closest_hit);
+	//find_closest_hit_cylinder(ray, scene, &closest_hit);
 	return (closest_hit);
 }
 
@@ -55,7 +55,7 @@ void	find_closest_hit_plane(t_ray *ray, t_scene *scene, t_hit *closest_hit)
 		plane = plane->next;
 	}
 }
-
+/*
 void	find_closest_hit_cylinder(t_ray *ray, t_scene *scene,
 			t_hit *closest_hit)
 {
@@ -77,3 +77,4 @@ void	find_closest_hit_cylinder(t_ray *ray, t_scene *scene,
 		cylinder = cylinder->next;
 	}
 }
+*/
