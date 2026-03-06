@@ -55,8 +55,8 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 {
 	t_hit		*hit;
 	t_sphere	*sphere;
-	// t_plane		*plane;
-	// t_cylinder	*cylinder;
+	t_plane		*plane;
+	t_cylinder	*cylinder;
 
 	sphere = scene->spheres;
 	while (sphere)
@@ -68,25 +68,25 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 			free(hit);
 		sphere = sphere->next;
 	}
-	// plane = scene->planes;
-	// while (plane)
-	// {
-	// 	hit = ray_hit_plane(shadow_ray, plane);
-	// 	if (hit && hit->t > EPSILON && hit->t < light_distance)
-	// 		return (free(hit), true);
-	// 	if (hit)
-	// 		free(hit);
-	// 	plane = plane->next;
-	// }
-	// cylinder = scene->cylinders;
-	// while (cylinder)
-	// {
-	// 	hit = ray_hit_cylinder(shadow_ray, cylinder);
-	// 	if (hit && hit->t > EPSILON && hit->t < light_distance)
-	// 		return (free(hit), true);
-	// 	if (hit)
-	// 		free(hit);
-	// 	cylinder = cylinder->next;
-	// }
+	plane = scene->planes;
+	while (plane)
+	{
+		hit = ray_hit_plane(shadow_ray, plane);
+		if (hit && hit->t > EPSILON && hit->t < light_distance)
+			return (free(hit), true);
+		if (hit)
+			free(hit);
+		plane = plane->next;
+	}
+	cylinder = scene->cylinders;
+	while (cylinder)
+	{
+		hit = ray_hit_cylinder(shadow_ray, cylinder);
+		if (hit && hit->t > EPSILON && hit->t < light_distance)
+			return (free(hit), true);
+		if (hit)
+			free(hit);
+		cylinder = cylinder->next;
+	}
 	return (false);
 }
