@@ -56,7 +56,6 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 	t_hit		*hit;
 	t_sphere	*sphere;
 	t_plane		*plane;
-	t_cylinder	*cylinder;
 
 	sphere = scene->spheres;
 	while (sphere)
@@ -64,8 +63,7 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 		hit = ray_hit_sphere(shadow_ray, sphere);
 		if (hit && (hit->t > EPSILON) && (hit->t < light_distance))
 			return (free(hit), true);
-		if (hit)
-			free(hit);
+		free_hit(hit);
 		sphere = sphere->next;
 	}
 	plane = scene->planes;
@@ -74,18 +72,27 @@ bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
 		hit = ray_hit_plane(shadow_ray, plane);
 		if (hit && hit->t > EPSILON && hit->t < light_distance)
 			return (free(hit), true);
-		if (hit)
-			free(hit);
+		free_hit(hit);
 		plane = plane->next;
 	}
+	if (is_path_blocked_cylinder(shadow_ray, scene, light_distance))
+		return (true);
+	return (false);
+}
+
+bool	is_path_blocked_cylinder(t_ray *shadow_ray, t_scene *scene,
+			double light_distance)
+{
+	t_hit		*hit;
+	t_cylinder	*cylinder;
+
 	cylinder = scene->cylinders;
 	while (cylinder)
 	{
 		hit = ray_hit_cylinder(shadow_ray, cylinder);
 		if (hit && hit->t > EPSILON && hit->t < light_distance)
 			return (free(hit), true);
-		if (hit)
-			free(hit);
+		free_hit(hit);
 		cylinder = cylinder->next;
 	}
 	return (false);

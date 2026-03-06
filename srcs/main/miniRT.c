@@ -10,22 +10,16 @@ int	main(int argc, char **argv)
 	t_scene	*scene;
 
 	if (argc != 2)
-	{
 		print_error(BOLD "Usage: ./miniRT <scene_file>" DEFAULT, NULL, NULL);
-		return (EXIT_FAILURE);
-	}
 	scene = parse_scene(argv[1]);
 	if (!scene)
 		return (EXIT_FAILURE);
 	if (!init_mlx(scene))
-	{
-		print_error("MLX initialization failed", NULL, NULL);
-		exit_minirt(EXIT_FAILURE, scene);
-	}
+		print_error("MLX initialization failed", NULL, scene);
 	init_mlx_handlers(scene);
 	render_scene(scene);
-    mlx_put_image_to_window(scene->mlx, scene->mlx_win,
-			scene->mlx_img.img_ptr, 0, 0);
+	mlx_put_image_to_window(scene->mlx, scene->mlx_win, scene->mlx_img.img_ptr,
+		0, 0);
 	mlx_loop(scene->mlx);
 	return (EXIT_SUCCESS);
 }
