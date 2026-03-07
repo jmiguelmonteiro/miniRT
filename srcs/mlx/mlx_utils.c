@@ -40,8 +40,8 @@ bool	init_mlx(t_scene *scene)
 			&scene->mlx_img.bits_per_pixel,
 			&scene->mlx_img.line_len,
 			&scene->mlx_img.endian);
-    if (!scene->mlx_img.img_pixels_ptr)
-        return (mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr),
+	if (!scene->mlx_img.img_pixels_ptr)
+		return (mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr),
 			mlx_destroy_window(scene->mlx, scene->mlx_win), false);
-    return (true);
+	return (true);
 }
