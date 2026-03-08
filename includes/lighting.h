@@ -16,9 +16,12 @@ int		color_to_int(t_color c);
 // lighting.c
 t_color	apply_ambient(t_color obj_color, t_scene *scene);
 t_color	apply_diffuse(t_hit *hit, t_light light, t_color obj_color);
-bool	is_in_shadow(t_hit *hit, t_light light, t_scene *scene);
 t_color	calculate_lighting(t_hit *hit, t_scene *scene);
 
 // shadows.c
+bool	is_in_shadow(t_hit *hit, t_light *light, t_scene *scene);
+t_ray	*create_shadow_ray(t_tuple point, t_tuple offset, t_tuple to_light);
+bool	is_path_blocked(t_ray *shadow_ray, t_scene *scene,
+			double light_distance);
 
 #endif

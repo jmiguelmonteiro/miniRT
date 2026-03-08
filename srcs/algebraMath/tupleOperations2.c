@@ -32,7 +32,7 @@ double	tuple_dot(t_tuple *a, t_tuple *b)
 {
 	double	result;
 
-	result = a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w;
+	result = a->x * b->x + a->y * b->y + a->z * b->z;
 	return (result);
 }
 

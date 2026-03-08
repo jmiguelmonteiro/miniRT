@@ -21,8 +21,13 @@ MLX_DIR		= ./libs/minilibx-linux
 
 # Compiler and Flags
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 INCLUDES	= -I./includes -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
+
+# Add -DDEBUG flag when DEBUG=1
+ifdef DEBUG
+    CFLAGS += -DDEBUG -g
+endif
 
 # Handle different OS configurations
 UNAME_S := $(shell uname -s)

@@ -2,6 +2,34 @@
 #include <algebraOperations.h>
 #include <structs.h>
 
+t_material	default_material(void);
+
+t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
+{
+	t_sphere	*sphere;
+	t_matrix	*scale;
+	t_matrix	*trans;
+	t_matrix	*transform;
+	double		radius;
+
+	sphere = malloc(sizeof(t_sphere));
+	if (!sphere)
+		return (NULL);
+	sphere->center = center;
+	sphere->diameter = diameter;
+	sphere->color = color;
+	sphere->material = default_material();
+	radius = diameter / 2.0;
+	scale = scaling(radius, radius, radius);
+	trans = translation(center.x, center.y, center.z);
+	transform = multiply_matrices(trans, scale);
+	free (scale);
+	free (trans);
+	sphere->transform = transform;
+	sphere->next = NULL;
+	return (sphere);
+}
+
 t_material	default_material(void)
 {
 	t_material	mat;
@@ -13,26 +41,6 @@ t_material	default_material(void)
 	return (mat);
 }
 
-t_sphere	*create_sphere(t_tuple center, double diameter, t_color color)
-{
-	t_sphere	*sphere;
-
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
-		return (NULL);
-	sphere->center = center;
-	sphere->diameter = diameter;
-	sphere->color = color;
-	sphere->material = default_material();
-	sphere->transform = identity_matrix();
-	if (!sphere->transform)
-	{
-		free(sphere);
-		return (NULL);
-	}
-	sphere->next = NULL;
-	return (sphere);
-}
 
 void	set_sphere_transform(t_sphere *sphere, t_matrix *transform)
 {

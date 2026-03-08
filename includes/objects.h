@@ -1,0 +1,24 @@
+#ifndef OBJECTS_H
+#define OBJECTS_H
+
+#include <structs.h>
+
+//Plane
+
+t_plane		*create_plane(t_tuple point, t_tuple normal, t_color color);
+
+
+// Sphers
+
+t_sphere	*create_sphere(t_tuple center, double diameter, t_color color);
+void		set_sphere_transform(t_sphere *sphere, t_matrix *transform);
+
+
+// Cylindre
+
+
+// General
+t_material	default_material(void);
+
+
+#endif
