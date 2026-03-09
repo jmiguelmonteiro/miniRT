@@ -28,12 +28,8 @@ bool	init_mlx(t_scene *scene)
 	scene->mlx_win = mlx_new_window(
 			scene->mlx,
 			scene->width,
-<<<<<<< HEAD
 			scene->height,
 			"miniRT by josemigu and tmatheusdiniz");
-=======
-			scene->height, "miniRT by josemigu and mreinald");
->>>>>>> 04ff8bafa3e6265ba8a5bfeee28c6de0b77967b4
 	if (!scene->mlx_win)
 		return (false);
 	scene->mlx_img.img_ptr = mlx_new_image(scene->mlx, scene->width,

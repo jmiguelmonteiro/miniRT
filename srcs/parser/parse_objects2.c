@@ -66,6 +66,10 @@ void	parse_cylinder(char *line, t_scene *scene)
 			line, scene);
 	//cylinder = create_cylinder(center, normal, diameter, height,
 	//		parse_color(&line, scene));
+	printf("%i", (int)center.w);
+	printf("%i", (int)normal.w);
+	printf("%i", (int)diameter);
+	printf("%i", (int)height);
 	cylinder = NULL;
 	if (!cylinder)
 		print_error("Error allocating memory for cylinder definition: ",

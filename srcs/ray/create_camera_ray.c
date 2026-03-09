@@ -94,7 +94,7 @@ static t_tuple	get_canvas_pt(t_scene *scene, int x, int y)
 		hh = half_view;
 	}
 	pt.x = hw - (x + 0.5) * (hw * 2.0 / scene->width);
-	pt.y = hh - (y + 0.5) * (hw * 2.0 / scene->width);
+	pt.y = hh - (y + 0.5) * (hh * 2.0 / scene->height);
 	pt.z = -1.0;
 	pt.w = 1.0;
 	return (pt);
@@ -104,6 +104,7 @@ t_ray	*create_camera_ray(t_scene *scene, int x, int y)
 {
 	t_matrix	*inv;
 	t_tuple		canvas_pt;
+	t_tuple		view_origin;
 	t_tuple		*pixel;
 	t_tuple		*origin;
 	t_tuple		*dir;
@@ -111,7 +112,8 @@ t_ray	*create_camera_ray(t_scene *scene, int x, int y)
 	inv = build_view_inv(&scene->camera);
 	canvas_pt = get_canvas_pt(scene, x, y);
 	pixel = matrix_multiply_tuple(inv, &canvas_pt);
-	origin = matrix_multiply_tuple(inv, &scene->camera.position);
+	view_origin = (t_tuple){0.0, 0.0, 0.0, 1.0};
+	origin = matrix_multiply_tuple(inv, &view_origin);
 	free(inv);
 	dir = tuple_subtract(pixel, origin);
 	tuple_normalize(dir);

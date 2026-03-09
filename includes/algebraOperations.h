@@ -3,8 +3,8 @@
 
 # include <stdlib.h>
 # include <math.h>
-# include <structs.h>
 # include <libft.h>
+# include <structs.h>
 
 // Magnitude and normalization
 void		tuple_normalize(t_tuple *v);
