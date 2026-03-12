@@ -17,6 +17,23 @@ void	free_mlx(t_scene *scene)
 	return ;
 }
 
+static bool	init_mlx_image(t_scene *scene)
+{
+	scene->mlx_img.img_ptr = mlx_new_image(scene->mlx, scene->width,
+			scene->height);
+	if (!scene->mlx_img.img_ptr)
+		return (mlx_destroy_window(scene->mlx, scene->mlx_win), false);
+	scene->mlx_img.img_pixels_ptr = mlx_get_data_addr(
+			scene->mlx_img.img_ptr,
+			&scene->mlx_img.bits_per_pixel,
+			&scene->mlx_img.line_len,
+			&scene->mlx_img.endian);
+	if (!scene->mlx_img.img_pixels_ptr)
+		return (mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr),
+			mlx_destroy_window(scene->mlx, scene->mlx_win), false);
+	return (true);
+}
+
 bool	init_mlx(t_scene *scene)
 {
 	scene->width = WINDOW_WIDTH;
@@ -32,17 +49,5 @@ bool	init_mlx(t_scene *scene)
 			"miniRT by josemigu and tmatheusdiniz");
 	if (!scene->mlx_win)
 		return (false);
-	scene->mlx_img.img_ptr = mlx_new_image(scene->mlx, scene->width,
-			scene->height);
-	if (!scene->mlx_img.img_ptr)
-		return (mlx_destroy_window(scene->mlx, scene->mlx_win), false);
-	scene->mlx_img.img_pixels_ptr = mlx_get_data_addr(
-			scene->mlx_img.img_ptr,
-			&scene->mlx_img.bits_per_pixel,
-			&scene->mlx_img.line_len,
-			&scene->mlx_img.endian);
-    if (!scene->mlx_img.img_pixels_ptr)
-        return (mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr),
-			mlx_destroy_window(scene->mlx, scene->mlx_win), false);
-    return (true);
+	return (init_mlx_image(scene));
 }

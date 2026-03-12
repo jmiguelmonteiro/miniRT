@@ -41,7 +41,6 @@ t_material	default_material(void)
 	return (mat);
 }
 
-
 void	set_sphere_transform(t_sphere *sphere, t_matrix *transform)
 {
 	if (!sphere || !transform)

@@ -93,9 +93,7 @@ bool	is_path_blocked_cylinder(t_ray *shadow_ray, t_scene *scene,
 	cylinder = scene->cylinders;
 	while (cylinder)
 	{
-		free (shadow_ray); // to discard
-		hit = NULL; // to discard
-		//hit = ray_hit_cylinder(shadow_ray, cylinder);
+		hit = ray_hit_cylinder(shadow_ray, cylinder);
 		if (hit && hit->t > EPSILON && hit->t < light_distance)
 			return (free(hit), true);
 		free_hit(hit);
