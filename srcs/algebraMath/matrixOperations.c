@@ -1,5 +1,6 @@
 #include <algebraOperations.h>
 #include <miniRT.h>
+#include <structs.h>
 
 int	is_invertible(t_matrix *m);
 

@@ -60,15 +60,14 @@ void	parse_cylinder(char *line, t_scene *scene)
 	normal = parse_tuple(&line, scene, false);
 	diameter = parse_double(&line, scene);
 	height = parse_double(&line, scene);
+	cylinder = create_cylinder(center, normal, diameter, height);
+	if (!cylinder)
+		print_error("Error allocating memory for cylinder: ",
+			line, scene);
+	cylinder->color = parse_color(&line, scene);
 	skip_whitespaces(&line);
 	if (*line != '\0' && *line != '\n')
-		print_error("Unexpected characters after cylinder definition: ",
-			line, scene);
-	//cylinder = create_cylinder(center, normal, diameter, height,
-	//		parse_color(&line, scene));
-	cylinder = NULL;
-	if (!cylinder)
-		print_error("Error allocating memory for cylinder definition: ",
+		print_error("Unexpected characters after cylinder: ",
 			line, scene);
 	cylinder->next = scene->cylinders;
 	scene->cylinders = cylinder;

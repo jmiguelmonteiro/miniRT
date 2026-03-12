@@ -89,6 +89,8 @@ typedef struct s_cylinder
 	double				diameter;
 	double				height;
 	t_color				color;
+	t_matrix			*transform;
+	t_material			material;
 	struct s_cylinder	*next;
 }	t_cylinder;
 

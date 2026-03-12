@@ -2,16 +2,8 @@
 # define MINIRT_H
 
 # define EPSILON 0.00001
-
-// Development mode - fast rendering
-#ifdef DEBUG
-    #define WINDOW_WIDTH   400
-    #define WINDOW_HEIGHT  300
-#else
-    // Production mode - good quality
-    #define WINDOW_WIDTH   800
-    #define WINDOW_HEIGHT  600
-#endif
+# define WINDOW_WIDTH   800
+# define WINDOW_HEIGHT  600
 
 # include <libft.h>
 # include <unistd.h>

@@ -55,21 +55,46 @@ bool	intersect_sphere(t_ray *ray, t_sphere *sphere, double *t_values)
 	return (true);
 }
 
-double	get_closest_intersection(double *t_values, int count)
+t_hit	*ray_hit_sphere(t_ray *ray, t_sphere *sphere)
 {
-	double	closest;
-	int		i;
+	double	t_values[2];
+	double	closest_t;
+	t_hit	*hit;
 
-	closest = -1.0;
-	i = 0;
-	while (i < count)
-	{
-		if (t_values[i] > EPSILON)
-		{
-			if (closest < 0 || t_values[i] < closest)
-				closest = t_values[i];
-		}
-		i++;
-	}
-	return (closest);
+	if (!intersect_sphere(ray, sphere, t_values))
+		return (NULL);
+	closest_t = get_closest_intersection(t_values, 2);
+	if (closest_t < 0)
+		return (NULL);
+	hit = create_hit(closest_t, ray, sphere);
+	return (hit);
+}
+
+t_tuple	*sphere_normal_at(t_sphere *sphere, t_tuple *wp)
+{
+	t_matrix	*inv;
+	t_matrix	*inv_t;
+	t_tuple		*point;
+	t_tuple		normal;
+
+	inv = inverse_matrix(sphere->transform);
+	if (!inv)
+		return (NULL);
+	point = matrix_multiply_tuple(inv, wp);
+	if (!point)
+		return (free(inv), NULL);
+	normal = *point;
+	normal.w = 0.0;
+	free(point);
+	inv_t = transpose_matrix(inv);
+	free(inv);
+	if (!inv_t)
+		return (NULL);
+	point = matrix_multiply_tuple(inv_t, &normal);
+	free(inv_t);
+	if (!point)
+		return (NULL);
+	point->w = 0.0;
+	tuple_normalize(point);
+	return (point);
 }

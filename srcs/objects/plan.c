@@ -31,18 +31,34 @@ t_plane	*create_plane(t_tuple point, t_tuple normal, t_color color)
 	return (plane);
 }
 
+static void	fill_rot_cells(t_matrix *rot, t_tuple *a, double c, double s)
+{
+	double	t;
+
+	t = 1.0 - c;
+	set_matrix_cel(&rot->row[0], 0, t * a->x * a->x + c);
+	set_matrix_cel(&rot->row[0], 1, t * a->x * a->y - s * a->z);
+	set_matrix_cel(&rot->row[0], 2, t * a->x * a->z + s * a->y);
+	set_matrix_cel(&rot->row[1], 0, t * a->x * a->y + s * a->z);
+	set_matrix_cel(&rot->row[1], 1, t * a->y * a->y + c);
+	set_matrix_cel(&rot->row[1], 2, t * a->y * a->z - s * a->x);
+	set_matrix_cel(&rot->row[2], 0, t * a->x * a->z - s * a->y);
+	set_matrix_cel(&rot->row[2], 1, t * a->y * a->z + s * a->x);
+	set_matrix_cel(&rot->row[2], 2, t * a->z * a->z + c);
+}
+
 static t_matrix	*rotation_from_normal(t_tuple normal)
 {
 	t_tuple		up;
 	t_tuple		*axis;
 	double		dot;
 	double		angle;
-	double		c;
-	double		s;
-	double		t;
 	t_matrix	*rot;
 
-	up.x = 0.0; up.y = 1.0; up.z = 0.0; up.w = 0.0;
+	up.x = 0.0;
+	up.y = 1.0;
+	up.z = 0.0;
+	up.w = 0.0;
 	dot = tuple_dot(&up, &normal);
 	if (dot > 1.0 - EPSILON)
 		return (identity_matrix());
@@ -51,19 +67,8 @@ static t_matrix	*rotation_from_normal(t_tuple normal)
 	axis = tuple_cross(&up, &normal);
 	tuple_normalize(axis);
 	angle = acos(dot);
-	c = cos(angle);
-	s = sin(angle);
-	t = 1.0 - c;
 	rot = identity_matrix();
-	set_matrix_cel(&rot->row[0], 0, t * axis->x * axis->x + c);
-	set_matrix_cel(&rot->row[0], 1, t * axis->x * axis->y - s * axis->z);
-	set_matrix_cel(&rot->row[0], 2, t * axis->x * axis->z + s * axis->y);
-	set_matrix_cel(&rot->row[1], 0, t * axis->x * axis->y + s * axis->z);
-	set_matrix_cel(&rot->row[1], 1, t * axis->y * axis->y + c);
-	set_matrix_cel(&rot->row[1], 2, t * axis->y * axis->z - s * axis->x);
-	set_matrix_cel(&rot->row[2], 0, t * axis->x * axis->z - s * axis->y);
-	set_matrix_cel(&rot->row[2], 1, t * axis->y * axis->z + s * axis->x);
-	set_matrix_cel(&rot->row[2], 2, t * axis->z * axis->z + c);
+	fill_rot_cells(rot, axis, cos(angle), sin(angle));
 	free(axis);
 	return (rot);
 }

@@ -17,5 +17,7 @@ t_hit	*ray_hit_sphere(t_ray *ray, t_sphere *sphere);
 t_hit	*ray_hit_plane(t_ray *ray, t_plane *plane);
 t_hit	*ray_hit_cylinder(t_ray *ray, t_cylinder *cylinder);
 t_tuple	*sphere_normal_at(t_sphere *sphere, t_tuple *point);
+bool	intersect_cylinder(t_ray *ray, t_cylinder *cylinder,
+			double *t_values, int *hit_count);
 
 #endif

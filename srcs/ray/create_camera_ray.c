@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   camera_ray.c                                       :+:      :+:    :+:  */
+/*                                                    +:+ +:+         +:+    */
+/*   By: student <student@student.42.fr>            +#+  +:+       +#+       */
+/*                                                +#+#+#+#+#+   +#+          */
+/*   Created: 2024/01/01 00:00:00 by student           #+#    #+#            */
+/*   Updated: 2024/01/01 00:00:00 by student          ###   ########.fr      */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "miniRT.h"
 #include "algebraOperations.h"
 #include "ray.h"
@@ -29,7 +41,6 @@ static t_matrix	*build_orient(t_camera *cam)
 	left = tuple_cross(&cam->orientation, &world_up);
 	tuple_normalize(left);
 	true_up = tuple_cross(left, &cam->orientation);
-	tuple_normalize(true_up);
 	orient = identity_matrix();
 	set_matrix_cel(&orient->row[0], 0, left->x);
 	set_matrix_cel(&orient->row[0], 1, left->y);
@@ -96,17 +107,12 @@ t_ray	*create_camera_ray(t_scene *scene, int x, int y)
 	t_tuple		*pixel;
 	t_tuple		*origin;
 	t_tuple		*dir;
-	t_tuple	cam_origin;
 
-
-	cam_origin.x = 0.0;
-	cam_origin.y = 0.0;
-	cam_origin.z = 0.0;
-	cam_origin.w = 1.0;
 	inv = build_view_inv(&scene->camera);
 	canvas_pt = get_canvas_pt(scene, x, y);
 	pixel = matrix_multiply_tuple(inv, &canvas_pt);
-	origin = matrix_multiply_tuple(inv, &cam_origin);
+	canvas_pt = (t_tuple){0.0, 0.0, 0.0, 1.0};
+	origin = matrix_multiply_tuple(inv, &canvas_pt);
 	free(inv);
 	dir = tuple_subtract(pixel, origin);
 	tuple_normalize(dir);

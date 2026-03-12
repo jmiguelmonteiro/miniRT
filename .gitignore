@@ -63,3 +63,9 @@ miniRT
 
 #clang
 .cache/
+
+#json
+compile_commands.json
+
+#scenes
+scenes/

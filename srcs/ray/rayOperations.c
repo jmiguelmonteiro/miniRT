@@ -3,7 +3,6 @@
 #include <algebraOperations.h>
 #include <ray.h>
 
-
 t_ray	*create_ray(t_tuple *origin, t_tuple *direction)
 {
 	t_ray	*ray;
@@ -55,20 +54,22 @@ t_hit	*create_hit(double t, t_ray *ray, t_sphere *sphere)
 	return (hit);
 }
 
-void	free_ray(t_ray *ray)
+double	get_closest_intersection(double *t_values, int count)
 {
-	if (ray)
+	double	closest;
+	int		i;
+
+	closest = -1.0;
+	i = 0;
+	while (i < count)
 	{
-		if (ray->origin)
-			free(ray->origin);
-		if (ray->direction)
-			free(ray->direction);
-		free(ray);
+		if (t_values[i] > EPSILON)
+		{
+			if (closest < 0 || t_values[i] < closest)
+				closest = t_values[i];
+		}
+		i++;
 	}
+	return (closest);
 }
 
-void	free_hit(t_hit *hit)
-{
-	if (hit)
-		free(hit);
-}
