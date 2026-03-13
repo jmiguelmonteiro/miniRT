@@ -1,0 +1,27 @@
+# Temple with stone pillars
+# A classical hall with columns and a central altar sphere
+
+A 0.3 255,255,200
+
+# Camera looking down the hall
+C 0,8,-25 0,-0.1,1 70
+
+# Warm sunlight from above-left
+L -10,20,0 0.8 255,245,200
+
+# Stone floor
+pl 0,0,0 0,1,0 200,180,140
+
+# Back wall
+pl 0,0,18 0,0,1 190,170,130
+
+# Left pillars (front and back)
+cy -7,0,3 0,1,0 1.5 10 225,210,175
+cy -7,0,10 0,1,0 1.5 10 225,210,175
+
+# Right pillars (front and back)
+cy 7,0,3 0,1,0 1.5 10 225,210,175
+cy 7,0,10 0,1,0 1.5 10 225,210,175
+
+# Central altar sphere (purple gem)
+sp 0,3,9 4 130,60,220

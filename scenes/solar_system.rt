@@ -1,0 +1,28 @@
+# Solar system scene
+# Sun at center, surrounded by planets
+
+A 0.2 30,30,60
+
+# Camera looking at the system from above-front
+C 0,25,-55 0,-0.3,1 70
+
+# Sun as the main light source (bright warm yellow)
+L 0,12,15 1.0 255,220,100
+
+# Sun (large yellow sphere)
+sp 0,0,30 14 255,200,50
+
+# Mercury (small grey, close to sun)
+sp 15,0,30 2 180,170,160
+
+# Earth (blue-green)
+sp 25,0,30 4 50,120,200
+
+# Moon (small grey, near Earth)
+sp 29,1,26 1.5 190,190,190
+
+# Mars (red, farther out)
+sp -22,0,40 3.5 200,80,30
+
+# Space floor plane (very dark blue)
+pl 0,-20,0 0,1,0 5,5,20
