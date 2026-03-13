@@ -1,0 +1,28 @@
+# Abstract geometric composition
+# Mix of planes, spheres, and cylinders at interesting positions
+
+A 0.2 255,255,255
+
+# Camera at an angle looking into the scene
+C 12,18,-22 -0.35,-0.35,1 80
+
+# Warm angled light
+L -15,25,0 0.8 255,210,160
+
+# Dark blue floor
+pl 0,-3,0 0,1,0 40,40,90
+
+# Back wall (deep purple)
+pl 0,0,18 0,0,1 70,50,110
+
+# Large orange sphere (main focal point)
+sp -3,3,8 7 220,110,40
+
+# Vertical teal cylinder (left)
+cy -8,0,6 0,1,0 2 10 50,190,160
+
+# Horizontal blue cylinder (crossing the scene)
+cy 0,4,10 1,0,0 1.5 14 70,100,220
+
+# Small bright white sphere (accent)
+sp 5,6,5 2.5 240,240,255
