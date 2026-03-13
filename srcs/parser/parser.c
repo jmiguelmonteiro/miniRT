@@ -22,7 +22,7 @@ void	parse_line(char *line, t_scene *scene)
 	else if (*line == 'c' && *(line + 1) == 'y')
 		parse_cylinder(line + 2, scene);
 	else
-		print_error("Unknown identifier in scene file: ", line, scene);
+		print_error(RED "Unknown identifier in scene file: " RESET, line, scene);
 }
 
 t_scene	*parse_scene(char *filename)
