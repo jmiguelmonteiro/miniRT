@@ -18,4 +18,3 @@ void	free_hit(t_hit *hit)
 	if (hit)
 		free(hit);
 }
-

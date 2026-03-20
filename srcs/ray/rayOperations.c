@@ -72,4 +72,3 @@ double	get_closest_intersection(double *t_values, int count)
 	}
 	return (closest);
 }
-
