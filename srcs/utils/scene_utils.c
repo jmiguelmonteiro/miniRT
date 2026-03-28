@@ -60,12 +60,14 @@ void	free_scene(t_scene *scene)
 	while (scene->planes)
 	{
 		next_plane = scene->planes->next;
+		free(scene->spheres->transform);
 		free(scene->planes);
 		scene->planes = next_plane;
 	}
 	while (scene->cylinders)
 	{
 		next_cylinder = scene->cylinders->next;
+		free(scene->spheres->transform);
 		free(scene->cylinders);
 		scene->cylinders = next_cylinder;
 	}
