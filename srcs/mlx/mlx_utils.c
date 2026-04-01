@@ -1,4 +1,6 @@
 #include "mlx_inc.h"
+#include <miniRT.h>
+#include <utils.h>
 
 void	free_mlx(t_scene *scene)
 {
@@ -8,12 +10,14 @@ void	free_mlx(t_scene *scene)
 		mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr);
 	if (scene->mlx_win && scene->mlx)
 		mlx_destroy_window(scene->mlx, scene->mlx_win);
+#ifdef __linux__
 	if (scene->mlx)
 	{
 		mlx_loop_end(scene->mlx);
 		mlx_destroy_display(scene->mlx);
 		free(scene->mlx);
 	}
+#endif
 	return ;
 }
 

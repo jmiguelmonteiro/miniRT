@@ -17,12 +17,10 @@ SRC_DIR		= ./srcs
 OBJ_DIR		= objs
 BIN_DIR		= bin
 LIBFT_DIR	= ./libs/libft
-MLX_DIR		= ./libs/minilibx-linux
 
 # Compiler and Flags
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-INCLUDES	= -I./includes -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
 
 # Add -DDEBUG flag when DEBUG=1
 ifdef DEBUG
@@ -32,12 +30,16 @@ endif
 # Handle different OS configurations
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	INCLUDES += -I/usr/include/X11
+	MLX_DIR		= ./libs/minilibx-linux
+	MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
+	INCLUDES	= -I./includes -I$(LIBFT_DIR)/includes -I$(MLX_DIR) -I/usr/include/X11
 	CFLAGS_EXTRA = -L. -lXext -L. -lX11 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-	INCLUDES += -I/opt/X11/include
-	CFLAGS_EXTRA = -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor -lXinerama -lXxf86vm -lXrender -lX11-xcb -lXfixes -lm
+	MLX_DIR		= ./libs/minilibx-opengl
+	MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
+	INCLUDES	= -I./includes -I$(LIBFT_DIR)/includes -I$(MLX_DIR) -I/usr/X11/include
+	CFLAGS_EXTRA = -L/usr/X11/lib -lX11 -lXext -lm
 endif
 
 # Sources and Objects
@@ -49,8 +51,11 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS	= -L$(LIBFT_DIR) -lft
 MLX			= $(MLX_DIR)/libmlx.a
 
-# MinilibX
-MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
+# Valgrind
+SCENE			?= ./scenes/amongus.rt
+VALGRIND		?= valgrind
+VALGRIND_SUPP	= valgrind-minilibx.supp
+VALGRIND_FLAGS	= --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(VALGRIND_SUPP)
 
 # ASCII Art
 define ART
@@ -74,6 +79,11 @@ $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@clear
 	@echo "$$ART"
 	@echo "$(CYAN)miniRT compiled successfully!$(RESET)"
+	@if [ "$(UNAME_S)" = "Darwin" ]; then \
+		open -a XQuartz 2>/dev/null || true; \
+		sleep 2; \
+		echo "$(YELLOW)XQuartz opened. Run: export DISPLAY=:0 && ./bin/miniRT <scene>$(RESET)"; \
+	fi
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)

@@ -3,12 +3,13 @@
 
 # include <stdbool.h>
 
-// Object type identifiers
 typedef enum e_object_type
 {
 	OBJ_SPHERE,
 	OBJ_PLANE,
-	OBJ_CYLINDER
+	OBJ_CYLINDER,
+	OBJ_CAMERA,
+	OBJ_LIGHT
 }	t_object_type;
 
 typedef struct s_tuple
@@ -116,6 +117,10 @@ typedef struct s_scene
 	t_image		mlx_img;
 	int			width;
 	int			height;
+	void		*selected;
+	int			selected_type;
+	int			selected_idx;
+	int			total_objects;
 }	t_scene;
 
 typedef struct s_hit
