@@ -16,10 +16,11 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (!init_mlx(scene))
 		print_error("MLX initialization failed", NULL, scene);
-	init_mlx_handlers(scene);
+	init_selection(scene);
 	render_scene(scene);
-	mlx_put_image_to_window(scene->mlx, scene->mlx_win, scene->mlx_img.img_ptr,
-		0, 0);
+	mlx_put_image_to_window(scene->mlx, scene->mlx_win,
+		scene->mlx_img.img_ptr, 0, 0);
+	init_mlx_handlers(scene);
 	mlx_loop(scene->mlx);
 	return (EXIT_SUCCESS);
 }

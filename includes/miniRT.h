@@ -2,8 +2,8 @@
 # define MINIRT_H
 
 # define EPSILON 0.00001
-# define WINDOW_WIDTH   800
-# define WINDOW_HEIGHT  600
+# define WINDOW_WIDTH   400
+# define WINDOW_HEIGHT  300
 
 # include <libft.h>
 # include <unistd.h>
@@ -14,9 +14,11 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
+
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <math.h>
+
 
 // Basic colors
 # define DEFAULT "\033[0;39m"

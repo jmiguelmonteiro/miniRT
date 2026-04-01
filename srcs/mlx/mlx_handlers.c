@@ -1,4 +1,7 @@
+#include "miniRT.h"
 #include "mlx_inc.h"
+#include "render.h"
+#include <utils.h>
 
 int	handle_close(t_scene *scene)
 {
@@ -6,10 +9,48 @@ int	handle_close(t_scene *scene)
 	return (EXIT_SUCCESS);
 }
 
+static void	re_render(t_scene *scene)
+{
+	render_scene(scene);
+	mlx_put_image_to_window(scene->mlx, scene->mlx_win,
+		scene->mlx_img.img_ptr, 0, 0);
+}
+
+static int	is_transform_key(int keysym)
+{
+	if (keysym == XK_w || keysym == XK_s || keysym == XK_a || keysym == XK_d)
+		return (1);
+	if (keysym == XK_r || keysym == XK_f)
+		return (1);
+	if (keysym == XK_q || keysym == XK_e || keysym == XK_t || keysym == XK_g)
+		return (1);
+	if (keysym == XK_plus || keysym == XK_minus || keysym == XK_equal)
+		return (1);
+	if (keysym == XK_Up || keysym == XK_Down)
+		return (1);
+	return (0);
+}
+
 int	handle_key_input(int keysym, t_scene *s)
 {
 	if (keysym == XK_Escape)
 		handle_close(s);
+	else if (keysym == XK_Left)
+		cycle_selection(s, -1);
+	else if (keysym == XK_Right)
+		cycle_selection(s, 1);
+	else if (keysym == XK_Up || keysym == XK_Down)
+		handle_light_brightness(s, keysym);
+	else if (keysym == XK_w || keysym == XK_s || keysym == XK_a
+		|| keysym == XK_d || keysym == XK_r || keysym == XK_f)
+		handle_translate(s, keysym);
+	else if (keysym == XK_q || keysym == XK_e
+		|| keysym == XK_t || keysym == XK_g)
+		handle_rotate(s, keysym);
+	else if (keysym == XK_plus || keysym == XK_minus || keysym == XK_equal)
+		handle_resize(s, keysym);
+	if (is_transform_key(keysym))
+		re_render(s);
 	return (EXIT_SUCCESS);
 }
 
