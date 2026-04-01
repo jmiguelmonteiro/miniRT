@@ -49,6 +49,5 @@ t_scene	*parse_scene(char *filename)
 	validate_scene(scene);
 	normalize_scene_tuples(scene);
 	close(fd);
-	print_scene(scene);
 	return (scene);
 }

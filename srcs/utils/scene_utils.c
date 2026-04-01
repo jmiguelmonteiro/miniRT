@@ -44,11 +44,24 @@ void	normalize_scene_tuples(t_scene *scene)
 	}
 }
 
+void	free_scene2(t_scene *scene)
+{
+	t_cylinder	*next_cylinder;
+
+	while (scene->cylinders)
+	{
+		next_cylinder = scene->cylinders->next;
+		free(scene->cylinders->transform);
+		free(scene->cylinders);
+		scene->cylinders = next_cylinder;
+	}
+	free(scene);
+}
+
 void	free_scene(t_scene *scene)
 {
 	t_sphere	*next_sphere;
 	t_plane		*next_plane;
-	t_cylinder	*next_cylinder;
 
 	while (scene->spheres)
 	{
@@ -60,16 +73,9 @@ void	free_scene(t_scene *scene)
 	while (scene->planes)
 	{
 		next_plane = scene->planes->next;
-		free(scene->spheres->transform);
+		free(scene->planes->transform);
 		free(scene->planes);
 		scene->planes = next_plane;
 	}
-	while (scene->cylinders)
-	{
-		next_cylinder = scene->cylinders->next;
-		free(scene->spheres->transform);
-		free(scene->cylinders);
-		scene->cylinders = next_cylinder;
-	}
-	free(scene);
+	free_scene2(scene);
 }
