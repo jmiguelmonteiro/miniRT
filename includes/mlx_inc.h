@@ -2,7 +2,6 @@
 # define MLX_INC_H
 
 # include "structs.h"
-# include <util.h>
 
 // mlx_utils.c
 bool	init_mlx(t_scene *scene);
