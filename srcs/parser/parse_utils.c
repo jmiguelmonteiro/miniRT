@@ -73,6 +73,9 @@ void	print_error(char *message, char *arg, t_scene *scene)
 		ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	if (scene)
+	{
+		free_mlx(scene);
 		free_scene(scene);
+	}
 	exit(EXIT_FAILURE);
 }

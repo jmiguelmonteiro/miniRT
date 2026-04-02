@@ -1,13 +1,7 @@
 #include "miniRT.h"
 #include "mlx_inc.h"
 #include "render.h"
-#include <utils.h>
-
-int	handle_close(t_scene *scene)
-{
-	exit_minirt(EXIT_SUCCESS, scene);
-	return (EXIT_SUCCESS);
-}
+#include "utils.h"
 
 static void	re_render(t_scene *scene)
 {

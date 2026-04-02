@@ -64,11 +64,11 @@ void	parse_cylinder(char *line, t_scene *scene)
 	if (!cylinder)
 		print_error("Error allocating memory for cylinder: ",
 			line, scene);
+	cylinder->next = scene->cylinders;
+	scene->cylinders = cylinder;
 	cylinder->color = parse_color(&line, scene);
 	skip_whitespaces(&line);
 	if (*line != '\0' && *line != '\n')
 		print_error("Unexpected characters after cylinder: ",
 			line, scene);
-	cylinder->next = scene->cylinders;
-	scene->cylinders = cylinder;
 }
