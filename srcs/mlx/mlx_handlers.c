@@ -48,7 +48,8 @@ int	handle_key_input(int keysym, t_scene *s)
 		cycle_selection(s, -1);
 	else if (keysym == XK_Right)
 		cycle_selection(s, 1);
-	else if (keysym == XK_Up || keysym == XK_Down)
+	else if ((keysym == XK_Up || keysym == XK_Down)
+		&& s->selected_type == OBJ_LIGHT)
 		handle_light_brightness(s, keysym);
 	else if (keysym == XK_w || keysym == XK_s || keysym == XK_a
 		|| keysym == XK_d || keysym == XK_r || keysym == XK_f)
@@ -59,7 +60,8 @@ int	handle_key_input(int keysym, t_scene *s)
 		handle_rotate(s, keysym);
 	else if (keysym == XK_plus || keysym == XK_minus || keysym == XK_equal)
 		handle_resize(s, keysym);
-	if (is_transform_key(keysym))
+	if (is_transform_key(keysym) && !((keysym == XK_Up || keysym == XK_Down)
+			&& s->selected_type != OBJ_LIGHT))
 		re_render(s);
 	return (EXIT_SUCCESS);
 }

@@ -13,6 +13,7 @@
 #include "mlx_inc.h"
 #include <miniRT.h>
 #include <utils.h>
+#include <algebraOperations.h>
 
 void	free_mlx(t_scene *scene)
 {
@@ -64,4 +65,24 @@ bool	init_mlx(t_scene *scene)
 	if (!scene->mlx_win)
 		return (false);
 	return (init_mlx_image(scene));
+}
+
+void	rotate_camera(t_scene *scene, int keysym)
+{
+	double	angle;
+
+	angle = M_PI / 18.0;
+	if (keysym == XK_q)
+		rotate_tuple_x(&scene->camera.orientation, -angle);
+	else if (keysym == XK_e)
+		rotate_tuple_x(&scene->camera.orientation, angle);
+	else if (keysym == XK_t)
+		rotate_tuple_y(&scene->camera.orientation, -angle);
+	else if (keysym == XK_g)
+		rotate_tuple_y(&scene->camera.orientation, angle);
+	else if (keysym == XK_z)
+		rotate_tuple_z(&scene->camera.orientation, -angle);
+	else if (keysym == XK_h)
+		rotate_tuple_z(&scene->camera.orientation, angle);
+	tuple_normalize(&scene->camera.orientation);
 }

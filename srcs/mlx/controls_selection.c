@@ -12,13 +12,31 @@
 
 #include "miniRT.h"
 #include "mlx_inc.h"
+#include "structs.h"
+
+static void	count_objects_aux(t_scene *scene, int *count)
+{
+	t_plane		*pl;
+	t_cylinder	*cy;
+
+	pl = scene->planes;
+	while (pl)
+	{
+		(*count)++;
+		pl = pl->next;
+	}
+	cy = scene->cylinders;
+	while (cy)
+	{
+		(*count)++;
+		cy = cy->next;
+	}
+}
 
 static int	count_objects(t_scene *scene)
 {
 	int			count;
 	t_sphere	*sp;
-	t_plane		*pl;
-	t_cylinder	*cy;
 	t_light		*lt;
 
 	count = 1;
@@ -34,18 +52,7 @@ static int	count_objects(t_scene *scene)
 		count++;
 		sp = sp->next;
 	}
-	pl = scene->planes;
-	while (pl)
-	{
-		count++;
-		pl = pl->next;
-	}
-	cy = scene->cylinders;
-	while (cy)
-	{
-		count++;
-		cy = cy->next;
-	}
+	count_objects_aux(scene, &count);
 	return (count);
 }
 
