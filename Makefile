@@ -6,7 +6,7 @@
 #    By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/03 13:12:40 by josemigu          #+#    #+#              #
-#    Updated: 2026/04/03 13:12:41 by josemigu         ###   ########.fr        #
+#    Updated: 2026/04/03 13:54:03 by josemigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,55 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Sources and Objects
-SRCS		= $(wildcard $(SRC_DIR)/*/*.c) $(wildcard $(SRC_DIR)/*.c)
+#SRCS		= $(wildcard $(SRC_DIR)/*/*.c) $(wildcard $(SRC_DIR)/*.c)
+SRCS		= $(addprefix $(SRC_DIR)/, \
+				algebraMath/matrixOperations.c \
+				algebraMath/matrixOperations2.c \
+				algebraMath/matrixOperations3.c \
+				algebraMath/matrixTupleOperations.c \
+				algebraMath/transformation.c \
+				algebraMath/transformation2.c \
+				algebraMath/tupleOperations.c \
+				algebraMath/tupleOperations2.c \
+				algebraMath/tupleOperations3.c \
+				lighting/color.c \
+				lighting/color2.c \
+				lighting/lighting.c \
+				lighting/shadows.c \
+				main/miniRT.c \
+				mlx/controls_rebuild.c \
+				mlx/controls_resize.c \
+				mlx/controls_rotate.c \
+				mlx/controls_selection.c \
+				mlx/controls_selection2.c \
+				mlx/controls_transform.c \
+				mlx/mlx_handlers.c \
+				mlx/mlx_handlers2.c \
+				mlx/mlx_utils.c \
+				objects/cylinder.c \
+				objects/plan.c \
+				objects/sphere.c \
+				objects/transform_build.c \
+				parser/parse_elements.c \
+				parser/parse_objects.c \
+				parser/parse_objects2.c \
+				parser/parse_utils.c \
+				parser/parse_utils2.c \
+				parser/parser.c \
+				ray/create_camera_ray.c \
+				ray/ray_hit_cylinder.c \
+				ray/ray_hit_cylinder2.c \
+				ray/ray_hit_plane.c \
+				ray/ray_hit_sphere.c \
+				ray/rayOperations.c \
+				ray/rayTransform.c \
+				render/intersection.c \
+				render/render.c \
+				utils/free.c \
+				utils/operations_utils.c \
+				utils/scene_utils.c \
+				utils/utils.c \
+				)
 OBJS		= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRCS:.c=.o))
 
 # Libraries
