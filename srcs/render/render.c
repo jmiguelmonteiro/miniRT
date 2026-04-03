@@ -15,6 +15,7 @@
 #include "render.h"
 #include "lighting.h"
 #include "ray.h"
+#include <utils.h>
 
 void	render_scene(t_scene *scene)
 {

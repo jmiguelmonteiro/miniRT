@@ -24,4 +24,8 @@ void	free_scene(t_scene *scene);
 void	normalize_scene_tuples(t_scene *scene);
 void	exit_minirt(int exit_code, t_scene *scene);
 
+// Menu
+void	start_menu(t_scene *scene);
+void	render_menu(t_scene *scene);
+
 #endif

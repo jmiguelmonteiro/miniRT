@@ -116,6 +116,16 @@ typedef struct s_image
 	int		line_len;
 }	t_image;
 
+typedef struct s_menu
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bits_p_pixel;
+	int		l_length;
+	int		endian;
+	int		color;
+}	t_menu;
+
 typedef struct s_scene
 {
 	t_amb_light	amb_light;
@@ -124,9 +134,10 @@ typedef struct s_scene
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
+	t_image		mlx_img;
+	t_menu		menu;
 	void		*mlx;
 	void		*mlx_win;
-	t_image		mlx_img;
 	int			width;
 	int			height;
 	void		*selected;

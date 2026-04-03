@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	render_scene(scene);
 	mlx_put_image_to_window(scene->mlx, scene->mlx_win,
 		scene->mlx_img.img_ptr, 0, 0);
+	start_menu(scene);
+	render_scene(scene);
 	init_mlx_handlers(scene);
 	mlx_loop(scene->mlx);
 	return (EXIT_SUCCESS);
