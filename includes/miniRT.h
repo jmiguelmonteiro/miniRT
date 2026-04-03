@@ -6,7 +6,7 @@
 /*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:15:34 by josemigu          #+#    #+#             */
-/*   Updated: 2026/04/03 13:16:59 by josemigu         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:43:32 by josemigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MINIRT_H
 
 # define EPSILON 0.00001
-# define WINDOW_WIDTH   400
-# define WINDOW_HEIGHT  300
+# define WINDOW_WIDTH   800
+# define WINDOW_HEIGHT  600
 
 # include <libft.h>
 # include <unistd.h>
