@@ -6,7 +6,7 @@
 #    By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/03 13:12:40 by josemigu          #+#    #+#              #
-#    Updated: 2026/04/03 14:43:36 by josemigu         ###   ########.fr        #
+#    Updated: 2026/04/03 15:18:02 by josemigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS		= $(addprefix $(SRC_DIR)/, \
 				lighting/lighting.c \
 				lighting/shadows.c \
 				main/miniRT.c \
+				menu/menu.c \
 				mlx/controls_rebuild.c \
 				mlx/controls_resize.c \
 				mlx/controls_rotate.c \

@@ -6,7 +6,7 @@
 /*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:13:55 by josemigu          #+#    #+#             */
-/*   Updated: 2026/04/03 13:13:56 by josemigu         ###   ########.fr       */
+/*   Updated: 2026/04/03 15:24:26 by josemigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	re_render(t_scene *scene)
 	render_scene(scene);
 	mlx_put_image_to_window(scene->mlx, scene->mlx_win,
 		scene->mlx_img.img_ptr, 0, 0);
+	render_menu(scene);
 }
 
 static int	is_transform_key(int keysym)
