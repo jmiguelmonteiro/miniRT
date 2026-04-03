@@ -6,7 +6,7 @@
 /*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:14:11 by josemigu          #+#    #+#             */
-/*   Updated: 2026/04/03 13:14:12 by josemigu         ###   ########.fr       */
+/*   Updated: 2026/04/03 15:23:52 by josemigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	main(int argc, char **argv)
 	if (!init_mlx(scene))
 		print_error("MLX initialization failed", NULL, scene);
 	init_selection(scene);
+	start_menu(scene);
 	render_scene(scene);
 	mlx_put_image_to_window(scene->mlx, scene->mlx_win,
 		scene->mlx_img.img_ptr, 0, 0);
-	start_menu(scene);
-	render_scene(scene);
+	render_menu(scene);
 	init_mlx_handlers(scene);
 	mlx_loop(scene->mlx);
 	return (EXIT_SUCCESS);
