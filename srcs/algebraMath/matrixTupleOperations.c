@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrixTupleOperations.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/03 13:14:50 by josemigu          #+#    #+#             */
+/*   Updated: 2026/04/03 13:14:51 by josemigu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <algebraOperations.h>
 
 t_tuple	*matrix_multiply_tuple(t_matrix *m, t_tuple *t)

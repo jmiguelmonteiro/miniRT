@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/03 13:12:24 by josemigu          #+#    #+#             */
+/*   Updated: 2026/04/03 13:12:25 by josemigu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <algebraOperations.h>
 
 void	set_matrix_cel(t_tuple *row, int col, double value)
