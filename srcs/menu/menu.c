@@ -32,10 +32,10 @@ void	render_menu(t_scene *scene)
 {
 	int	y;
 
-	y = 50;
+	y = 20;
 	print_string(scene, MENU_X - 20, y, "-- miniRT menu --");
 	y = CONTROL_BOX;
-	print_string(scene, MENU_X, y, " /// CONTROLS ///");
+	print_string(scene, MENU_X, y, "INSTRUCTIONS:");
 	y += SPACE_B_LINES;
 	print_string(scene, MENU_X + 10, y, "Rotation:");
 	y += SPACE_B_LINES - 10;
@@ -48,6 +48,8 @@ void	render_menu(t_scene *scene)
 	print_string(scene, MENU_X + 10, y, "Animation:");
 	y += SPACE_B_LINES - 10;
 	print_string(scene, MENU_X + 20, y, ANIMATION_MSG);
+	y+= SPACE_B_LINES;
+	print_string(scene, MENU_X + 20, y, ANIMATION_MSG_LEFT);
 	y+= SPACE_B_LINES;
 	print_string(scene, MENU_X + 10, y, "Press ESC for exit!!!");
 }

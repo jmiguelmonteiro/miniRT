@@ -15,15 +15,24 @@
 
 static void	select_camera_or_light(t_scene *scene, int idx, int *i)
 {
+	t_light	*light;
+
 	if (idx == (*i)++)
 	{
 		scene->selected = &scene->camera;
 		scene->selected_type = OBJ_CAMERA;
+		return ;
 	}
-	else if (idx == (*i)++)
+	light = scene->lights;
+	while (light)
 	{
-		scene->selected = &scene->light;
-		scene->selected_type = OBJ_LIGHT;
+		if (idx == (*i)++)
+		{
+			scene->selected = light;
+			scene->selected_type = OBJ_LIGHT;
+			return ;
+		}
+		light = light->next;
 	}
 }
 

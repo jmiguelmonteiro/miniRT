@@ -30,7 +30,7 @@ void	validate_scene(t_scene *scene)
 		print_error("No ambient light defined.", NULL, scene);
 	if (!scene->camera.defined)
 		print_error("No camera defined.", NULL, scene);
-	if (!scene->light.defined)
+	if (!scene->lights)
 		print_error("No light defined.", NULL, scene);
 	if (!scene->spheres && !scene->planes && !scene->cylinders)
 		print_error("No objects defined.", NULL, scene);
@@ -74,6 +74,7 @@ void	free_scene(t_scene *scene)
 {
 	t_sphere	*next_sphere;
 	t_plane		*next_plane;
+	t_light		*next_light;
 
 	while (scene->spheres)
 	{
@@ -88,6 +89,12 @@ void	free_scene(t_scene *scene)
 		free(scene->planes->transform);
 		free(scene->planes);
 		scene->planes = next_plane;
+	}
+	while (scene->lights)
+	{
+		next_light = scene->lights->next;
+		free(scene->lights);
+		scene->lights = next_light;
 	}
 	free_scene2(scene);
 }

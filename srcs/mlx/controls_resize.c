@@ -59,15 +59,19 @@ void	handle_resize(t_scene *scene, int keysym)
 void	handle_light_brightness(t_scene *scene, int keysym)
 {
 	double	step;
+	t_light	*light;
 
+	if (scene->selected_type != OBJ_LIGHT)
+		return ;
+	light = (t_light *)scene->selected;
 	step = 0.1;
 	if (keysym == XK_Down)
 		step = -0.1;
-	scene->light.brightness += step;
-	if (scene->light.brightness < 0.0)
-		scene->light.brightness = 0.0;
-	if (scene->light.brightness > 1.0)
-		scene->light.brightness = 1.0;
-	printf("\r\033[KLight brightness: %.1f", scene->light.brightness);
+	light->brightness += step;
+	if (light->brightness < 0.0)
+		light->brightness = 0.0;
+	if (light->brightness > 1.0)
+		light->brightness = 1.0;
+	printf("\r\033[KLight brightness: %.1f; ", light->brightness);
 	fflush(stdout);
 }

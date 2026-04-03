@@ -61,10 +61,11 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_tuple	position;
-	double	brightness;
-	t_color	color;
-	bool	defined;
+	t_tuple			position;
+	double			brightness;
+	t_color			color;
+	bool			defined;
+	struct s_light	*next;
 }	t_light;
 
 typedef struct s_material
@@ -130,7 +131,7 @@ typedef struct s_scene
 {
 	t_amb_light	amb_light;
 	t_camera	camera;
-	t_light		light;
+	t_light		*lights;
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;

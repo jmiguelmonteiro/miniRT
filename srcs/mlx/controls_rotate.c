@@ -44,46 +44,66 @@ static void	rotate_tuple_x(t_tuple *t, double angle)
 	t->z = new_z;
 }
 
+static void	rotate_tuple_z(t_tuple *t, double angle)
+{
+	double	cos_a;
+	double	sin_a;
+	double	new_x;
+	double	new_y;
+
+	cos_a = cos(angle);
+	sin_a = sin(angle);
+	new_x = t->x * cos_a - t->y * sin_a;
+	new_y = t->x * sin_a + t->y * cos_a;
+	t->x = new_x;
+	t->y = new_y;
+}
+
 static void	rotate_camera(t_scene *scene, int keysym)
 {
 	double	angle;
 
 	angle = M_PI / 18.0;
 	if (keysym == XK_q)
-		rotate_tuple_y(&scene->camera.orientation, -angle);
-	else if (keysym == XK_e)
-		rotate_tuple_y(&scene->camera.orientation, angle);
-	else if (keysym == XK_t)
 		rotate_tuple_x(&scene->camera.orientation, -angle);
-	else if (keysym == XK_g)
+	else if (keysym == XK_e)
 		rotate_tuple_x(&scene->camera.orientation, angle);
+	else if (keysym == XK_t)
+		rotate_tuple_y(&scene->camera.orientation, -angle);
+	else if (keysym == XK_g)
+		rotate_tuple_y(&scene->camera.orientation, angle);
+	else if (keysym == XK_z)
+		rotate_tuple_z(&scene->camera.orientation, -angle);
+	else if (keysym == XK_h)
+		rotate_tuple_z(&scene->camera.orientation, angle);
 	tuple_normalize(&scene->camera.orientation);
 }
 
 static void	rotate_plane_cyl(t_scene *scene, int keysym, double angle)
 {
+	t_tuple	*normal;
+
 	if (scene->selected_type == OBJ_PLANE)
-	{
-		if (keysym == XK_q || keysym == XK_e)
-			rotate_tuple_y(&((t_plane *)scene->selected)->normal,
-				(keysym == XK_q) * -angle + (keysym == XK_e) * angle);
-		else
-			rotate_tuple_x(&((t_plane *)scene->selected)->normal,
-				(keysym == XK_t) * -angle + (keysym == XK_g) * angle);
-		tuple_normalize(&((t_plane *)scene->selected)->normal);
+		normal = &((t_plane *)scene->selected)->normal;
+	else
+		normal = &((t_cylinder *)scene->selected)->normal;
+	printf("Rotating cylinder/plane - Before: (%f, %f, %f)\n",
+		normal->x, normal->y, normal->z);
+	if (keysym == XK_q || keysym == XK_e)
+		rotate_tuple_x(normal, (keysym == XK_q) * -angle
+			+ (keysym == XK_e) * angle);
+	else if (keysym == XK_t || keysym == XK_g)
+		rotate_tuple_y(normal, (keysym == XK_t) * -angle
+			+ (keysym == XK_g) * angle);
+	else if (keysym == XK_z || keysym == XK_h)
+		rotate_tuple_z(normal, (keysym == XK_z) * -angle
+			+ (keysym == XK_h) * angle);
+	tuple_normalize(normal);
+	printf("After rotation: (%f, %f, %f)\n", normal->x, normal->y, normal->z);
+	if (scene->selected_type == OBJ_PLANE)
 		rebuild_plane_transform((t_plane *)scene->selected);
-	}
 	else if (scene->selected_type == OBJ_CYLINDER)
-	{
-		if (keysym == XK_q || keysym == XK_e)
-			rotate_tuple_y(&((t_cylinder *)scene->selected)->normal,
-				(keysym == XK_q) * -angle + (keysym == XK_e) * angle);
-		else
-			rotate_tuple_x(&((t_cylinder *)scene->selected)->normal,
-				(keysym == XK_t) * -angle + (keysym == XK_g) * angle);
-		tuple_normalize(&((t_cylinder *)scene->selected)->normal);
 		rebuild_cylinder_transform((t_cylinder *)scene->selected);
-	}
 }
 
 void	handle_rotate(t_scene *scene, int keysym)
