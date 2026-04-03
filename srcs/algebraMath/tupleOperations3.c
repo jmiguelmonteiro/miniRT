@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tupleOperations3.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/03 13:15:12 by josemigu          #+#    #+#             */
+/*   Updated: 2026/04/03 13:15:13 by josemigu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <algebraOperations.h>
 
 t_tuple	*tuple_scalar_multiply(t_tuple *v, double scalar)
