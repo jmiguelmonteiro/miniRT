@@ -6,7 +6,7 @@
 #    By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/03 13:12:40 by josemigu          #+#    #+#              #
-#    Updated: 2026/04/03 13:54:03 by josemigu         ###   ########.fr        #
+#    Updated: 2026/04/03 14:43:36 by josemigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,6 @@ LIBFT_DIR	= ./libs/libft
 # Compiler and Flags
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-
-# Add -DDEBUG flag when DEBUG=1
-ifdef DEBUG
-    CFLAGS += -DDEBUG -g
-endif
 
 # Handle different OS configurations
 UNAME_S := $(shell uname -s)
