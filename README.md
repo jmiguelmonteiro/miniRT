@@ -15,7 +15,6 @@ Key features:
 - Camera with arbitrary position, orientation, and FOV
 - Scene description parsed from `.rt` files
 - Window management with ESC and close-button support
-- Debug build mode (400×300) and production mode (800×600)
 
 The project is developed as a two-person team. The workload is split as follows:
 - **josemigu**: documentation, integration, header files, testing, Makefile & norm compliance, memory magagement & cleanup, scene validation & error handling, main rendering loop, MiniLibX integration, parser, initial design, color computation, lighting system, scene management, shadow computation
