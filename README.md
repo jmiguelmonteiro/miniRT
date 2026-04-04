@@ -35,7 +35,7 @@ The project is developed as a two-person team. The workload is split as follows:
 ### Compilation
 
 ```bash
-# Standard build (800×600 window)
+# Standard build (900×700 window)
 make
 
 # Clean object files

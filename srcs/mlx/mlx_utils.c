@@ -6,7 +6,7 @@
 /*   By: josemigu <josemigu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:14:05 by josemigu          #+#    #+#             */
-/*   Updated: 2026/04/03 13:59:11 by josemigu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:53:33 by josemigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	free_mlx(t_scene *scene)
 		return ;
 	if (scene->mlx_img.img_ptr)
 		mlx_destroy_image(scene->mlx, scene->mlx_img.img_ptr);
+	if (scene->menu.img_ptr)
+		mlx_destroy_image(scene->mlx, scene->menu.img_ptr);
 	if (scene->mlx_win && scene->mlx)
 		mlx_destroy_window(scene->mlx, scene->mlx_win);
 	if (scene->mlx)
