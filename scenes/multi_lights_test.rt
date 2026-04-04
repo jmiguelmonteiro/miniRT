@@ -1,0 +1,27 @@
+# Test scene with multiple lights
+# Demonstrates per-light control
+
+A 0.2 255,255,255
+
+C 0,5,-15 0,-0.2,1 70
+
+# Main white light from top-left
+L -10,15,-5 0.7 255,255,255
+
+# Red accent light from right
+L 10,10,-5 0.5 255,100,100
+
+# Blue fill light from left
+L -8,5,0 0.4 100,150,255
+
+# Central sphere
+sp 0,2,0 4 200,200,200
+
+# Left sphere
+sp -5,1,2 2.5 150,100,200
+
+# Right sphere  
+sp 5,1,2 2.5 200,150,100
+
+# Floor
+pl 0,0,0 0,1,0 80,80,80

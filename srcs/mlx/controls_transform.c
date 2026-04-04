@@ -16,6 +16,8 @@
 
 static void	translate_object(t_scene *scene, double dx, double dy, double dz)
 {
+	t_light	*light;
+
 	if (scene->selected_type == OBJ_CAMERA)
 	{
 		scene->camera.position.x += dx;
@@ -24,9 +26,10 @@ static void	translate_object(t_scene *scene, double dx, double dy, double dz)
 	}
 	else if (scene->selected_type == OBJ_LIGHT)
 	{
-		scene->light.position.x += dx;
-		scene->light.position.y += dy;
-		scene->light.position.z += dz;
+		light = (t_light *)scene->selected;
+		light->position.x += dx;
+		light->position.y += dy;
+		light->position.z += dz;
 	}
 	else if (scene->selected_type == OBJ_SPHERE)
 	{

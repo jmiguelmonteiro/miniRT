@@ -15,6 +15,9 @@
 
 void	print_scene(t_scene *scene)
 {
+	t_light	*light;
+	int		light_num;
+
 	printf("Scene Details:\n\n");
 	printf("Ambient Light Ratio: %lf\n", scene->amb_light.ratio);
 	printf("Ambient Light Color: (%lf, %lf, %lf)\n", scene->amb_light.color.red,
@@ -24,11 +27,18 @@ void	print_scene(t_scene *scene)
 	printf("Camera Orientation: (%lf, %lf, %lf)\n", scene->camera.orientation.x,
 		scene->camera.orientation.y, scene->camera.orientation.z);
 	printf("Camera FOV: %lf\n", scene->camera.fov);
-	printf("Light Position: (%lf, %lf, %lf)\n", scene->light.position.x,
-		scene->light.position.y, scene->light.position.z);
-	printf("Light Brightness: %lf\n", scene->light.brightness);
-	printf("Light Color: (%lf, %lf, %lf)\n", scene->light.color.red,
-		scene->light.color.green, scene->light.color.blue);
+	light = scene->lights;
+	light_num = 1;
+	while (light)
+	{
+		printf("Light %d Position: (%lf, %lf, %lf)\n", light_num,
+			light->position.x, light->position.y, light->position.z);
+		printf("Light %d Brightness: %lf\n", light_num, light->brightness);
+		printf("Light %d Color: (%lf, %lf, %lf)\n", light_num,
+			light->color.red, light->color.green, light->color.blue);
+		light = light->next;
+		light_num++;
+	}
 	print_scene2(scene);
 }
 

@@ -12,33 +12,47 @@
 
 #include "miniRT.h"
 #include "mlx_inc.h"
+#include "structs.h"
+
+static void	count_objects_aux(t_scene *scene, int *count)
+{
+	t_plane		*pl;
+	t_cylinder	*cy;
+
+	pl = scene->planes;
+	while (pl)
+	{
+		(*count)++;
+		pl = pl->next;
+	}
+	cy = scene->cylinders;
+	while (cy)
+	{
+		(*count)++;
+		cy = cy->next;
+	}
+}
 
 static int	count_objects(t_scene *scene)
 {
 	int			count;
 	t_sphere	*sp;
-	t_plane		*pl;
-	t_cylinder	*cy;
+	t_light		*lt;
 
-	count = 2;
+	count = 1;
+	lt = scene->lights;
+	while (lt)
+	{
+		count++;
+		lt = lt->next;
+	}
 	sp = scene->spheres;
 	while (sp)
 	{
 		count++;
 		sp = sp->next;
 	}
-	pl = scene->planes;
-	while (pl)
-	{
-		count++;
-		pl = pl->next;
-	}
-	cy = scene->cylinders;
-	while (cy)
-	{
-		count++;
-		cy = cy->next;
-	}
+	count_objects_aux(scene, &count);
 	return (count);
 }
 
@@ -53,19 +67,19 @@ void	init_selection(t_scene *scene)
 static void	print_selection(t_scene *scene)
 {
 	if (scene->selected_type == OBJ_CAMERA)
-		printf("\r\033[K[%d/%d] Selected: Camera", scene->selected_idx + 1,
+		printf("\r\033[K[%d/%d] Selected: Camera; ", scene->selected_idx + 1,
 			scene->total_objects);
 	else if (scene->selected_type == OBJ_LIGHT)
-		printf("\r\033[K[%d/%d] Selected: Light", scene->selected_idx + 1,
+		printf("\r\033[K[%d/%d] Selected: Light; ", scene->selected_idx + 1,
 			scene->total_objects);
 	else if (scene->selected_type == OBJ_SPHERE)
-		printf("\r\033[K[%d/%d] Selected: Sphere", scene->selected_idx + 1,
+		printf("\r\033[K[%d/%d] Selected: Sphere; ", scene->selected_idx + 1,
 			scene->total_objects);
 	else if (scene->selected_type == OBJ_PLANE)
-		printf("\r\033[K[%d/%d] Selected: Plane", scene->selected_idx + 1,
+		printf("\r\033[K[%d/%d] Selected: Plane; ", scene->selected_idx + 1,
 			scene->total_objects);
 	else if (scene->selected_type == OBJ_CYLINDER)
-		printf("\r\033[K[%d/%d] Selected: Cylinder", scene->selected_idx + 1,
+		printf("\r\033[K[%d/%d] Selected: Cylinder; ", scene->selected_idx + 1,
 			scene->total_objects);
 	fflush(stdout);
 }

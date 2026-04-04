@@ -45,19 +45,39 @@ void	parse_camera(char *line, t_scene *scene)
 	scene->camera.defined = true;
 }
 
+static void	add_light_to_scene(t_scene *scene, t_light *new_light)
+{
+	t_light	*current;
+
+	if (!scene->lights)
+		scene->lights = new_light;
+	else
+	{
+		current = scene->lights;
+		while (current->next)
+			current = current->next;
+		current->next = new_light;
+	}
+}
+
 void	parse_light(char *line, t_scene *scene)
 {
-	if (scene->light.defined)
-		print_error("Light (L) already defined.", NULL, scene);
+	t_light	*new_light;
+
+	new_light = ft_calloc(1, sizeof(t_light));
+	if (!new_light)
+		print_error("Memory allocation failed for light.", NULL, scene);
 	skip_whitespaces(&line);
-	scene->light.position = parse_tuple(&line, scene, true);
+	new_light->position = parse_tuple(&line, scene, true);
 	skip_whitespaces(&line);
-	scene->light.brightness = parse_double(&line, scene);
+	new_light->brightness = parse_double(&line, scene);
 	skip_whitespaces(&line);
-	scene->light.color = parse_color(&line, scene);
+	new_light->color = parse_color(&line, scene);
 	skip_whitespaces(&line);
 	if (*line != '\0' && *line != '\n')
 		print_error("Unexpected characters after light definition: ",
 			line, scene);
-	scene->light.defined = true;
+	new_light->defined = true;
+	new_light->next = NULL;
+	add_light_to_scene(scene, new_light);
 }

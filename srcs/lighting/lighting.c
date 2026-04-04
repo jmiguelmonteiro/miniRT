@@ -47,13 +47,19 @@ t_color	calculate_lighting(t_hit *hit, t_scene *scene)
 	t_color	final_color;
 	t_color	ambient;
 	t_color	diffuse;
+	t_light	*light;
 
 	ambient = apply_ambient(hit->color, scene);
 	final_color = ambient;
-	if (!is_in_shadow(hit, &scene->light, scene))
+	light = scene->lights;
+	while (light)
 	{
-		diffuse = apply_diffuse(hit, scene->light, hit->color);
-		final_color = color_add(final_color, diffuse);
+		if (!is_in_shadow(hit, light, scene))
+		{
+			diffuse = apply_diffuse(hit, *light, hit->color);
+			final_color = color_add(final_color, diffuse);
+		}
+		light = light->next;
 	}
 	final_color = color_clamp(final_color);
 	return (final_color);

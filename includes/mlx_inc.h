@@ -18,6 +18,10 @@
 // mlx_utils.c
 bool		init_mlx(t_scene *scene);
 void		free_mlx(t_scene *scene);
+void		rotate_camera(t_scene *scene, int keysym);
+void		rotate_tuple_y(t_tuple *t, double angle);
+void		rotate_tuple_x(t_tuple *t, double angle);
+void		rotate_tuple_z(t_tuple *t, double angle);
 
 // mlx_handlers.c
 int			handle_key_input(int keysym, t_scene *s);
